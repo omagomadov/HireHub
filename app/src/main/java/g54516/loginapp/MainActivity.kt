@@ -25,4 +25,8 @@ class MainActivity : AppCompatActivity() {
         // Displaying the 'sandwich' icon
         NavigationUI.setupActionBarWithNavController(this, navigationController, drawer)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(navigationController, drawer)
+    }
 }
