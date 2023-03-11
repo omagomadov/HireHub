@@ -7,6 +7,10 @@ android {
     namespace 'g54516.loginapp'
     compileSdk 33
 
+    buildFeatures {
+        dataBinding true
+    }
+
     defaultConfig {
         applicationId "g54516.loginapp"
         minSdk 26
