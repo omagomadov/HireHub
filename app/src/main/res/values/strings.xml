@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">LoginApp</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about_title">About</string>
     <string name="login_student">54516</string>
     <string name="firstName_student">Oumar</string>
@@ -11,4 +10,5 @@
     <string name="fragment_about_title">About</string>
     <string name="login_text">Login</string>
     <string name="login_title_text">Login</string>
+    <string name="email_hint">Email</string>
 </resources>

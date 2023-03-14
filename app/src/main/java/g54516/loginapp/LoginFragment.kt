@@ -21,13 +21,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil
-            .inflate<FragmentLoginBinding>(
-                inflater, R.layout.fragment_login,
-                container, false
-            )
-        binding.loginButton.setOnClickListener { view: View ->
-            verifyEmail(view)
-        }
+            .inflate(inflater, R.layout.fragment_login, container, false)
+        binding.loginButton.setOnClickListener { view: View -> verifyEmail(view) }
         return binding.root
     }
 

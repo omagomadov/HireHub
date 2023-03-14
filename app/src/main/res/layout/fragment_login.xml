@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/margin"
-            android:drawableLeft="@drawable/baseline_email_24"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:hint="@string/email_hint"
             android:ems="10"
             android:inputType="textEmailAddress" />
 
@@ -38,6 +39,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/margin"
             android:text="@string/login_text"
-            app:cornerRadius="@dimen/cornder_radius" />
+            app:cornerRadius="@dimen/corner_radius" />
     </LinearLayout>
 </layout>
