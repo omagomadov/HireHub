@@ -1,4 +1,4 @@
-package g54516.HireHub
+package g54516.hireHub
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

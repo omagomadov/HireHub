@@ -1,4 +1,4 @@
-package g54516.HireHub
+package g54516.hireHub.ui.fragments
 
 import android.content.Context
 import android.os.Bundle

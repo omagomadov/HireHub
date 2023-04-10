@@ -6,12 +6,12 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="g54516.HireHub.LoginFragment"
+        android:name="g54516.hireHub.ui.fragments.LoginFragment"
         android:label="@string/fragment_login_title"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="g54516.HireHub.AboutFragment"
+        android:name="g54516.hireHub.ui.fragments.AboutFragment"
         android:label="@string/fragment_about_title"
         tools:layout="@layout/fragment_about" />
 </navigation>

@@ -12,7 +12,7 @@
         android:theme="@style/Theme.HireHub"
         tools:targetApi="31">
         <activity
-            android:name="g54516.HireHub.MainActivity"
+            android:name="g54516.hireHub.ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
