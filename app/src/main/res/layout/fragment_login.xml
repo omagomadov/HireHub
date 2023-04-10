@@ -23,6 +23,7 @@
 
         <EditText
             android:id="@+id/login_email"
+            android:imeOptions="flagNoFullscreen"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
