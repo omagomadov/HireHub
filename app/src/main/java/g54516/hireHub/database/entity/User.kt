@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 data class User (
 
     @PrimaryKey(autoGenerate = true)
-    val userId : Long?,
+    val userId : Long? = 0L,
 
     @ColumnInfo(name = "mail_address")
     val mailAddress : String?,
