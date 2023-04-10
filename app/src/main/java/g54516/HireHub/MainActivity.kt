@@ -1,19 +1,20 @@
-package g54516.loginapp
+package g54516.HireHub
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import g54516.loginapp.databinding.ActivityMainBinding
+import g54516.hirehub.R
+import g54516.hirehub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var navigationController : NavController
-    private lateinit var drawer : DrawerLayout
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navigationController: NavController
+    private lateinit var drawer: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

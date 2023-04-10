@@ -1,4 +1,4 @@
-package g54516.loginapp
+package g54516.HireHub
 
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +9,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import g54516.loginapp.databinding.FragmentLoginBinding
+import g54516.hirehub.R
+import g54516.hirehub.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
