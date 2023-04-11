@@ -1,9 +1,13 @@
 package g54516.hireHub.model
 
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.*
+import g54516.hireHub.database.HireHubDB
+import g54516.hireHub.database.entity.User
+import java.util.Date
 
 /**
  * ViewModel for the LoginFragment.
@@ -11,7 +15,7 @@ import java.util.*
  * @property isEmailValid A LiveData object indicating that an email address is valid or not.
  * @property displayToast A LiveData object indicating that an toast must be displayed or not.
  */
-class LoginViewModel : ViewModel() {
+class LoginViewModel(private val application: Application) : ViewModel() {
 
     private var _isEmailValid = MutableLiveData<Boolean>()
     val isEmailValid: LiveData<Boolean>
@@ -20,6 +24,8 @@ class LoginViewModel : ViewModel() {
     private var _displayToast = MutableLiveData<Boolean>()
     val displayToast: LiveData<Boolean>
         get() = _displayToast
+
+    //private val context = application
 
     init {
         _isEmailValid.value = false

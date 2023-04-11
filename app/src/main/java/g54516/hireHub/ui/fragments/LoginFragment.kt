@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import g54516.hireHub.model.LoginViewModel
+import g54516.hireHub.model.LoginViewModelFactory
 import g54516.hirehub.R
 import g54516.hirehub.databinding.FragmentLoginBinding
 import java.util.*
@@ -28,18 +29,23 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModelFactory : LoginViewModelFactory
     private lateinit var toast: Toast
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_login, container, false)
         binding.loginButton.setOnClickListener {
             saveEmail()
         }
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
+        viewModelFactory = LoginViewModelFactory(requireNotNull(this.activity).application)
+        viewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+
         viewModel.isEmailValid.observe(viewLifecycleOwner, Observer { isEmailValid ->
             if (viewModel.displayToast.value == true) {
                 toast = if (isEmailValid) {
@@ -54,6 +60,7 @@ class LoginFragment : Fragment() {
                 imm.hideSoftInputFromWindow(view?.windowToken, 0)
             }
         })
+
         return binding.root
     }
 
