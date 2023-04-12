@@ -10,6 +10,10 @@ import androidx.navigation.ui.NavigationUI
 import g54516.hirehub.R
 import g54516.hirehub.databinding.ActivityMainBinding
 
+/**
+ * Main activity for the HireHub application.
+ * Provides the main user interface and navigation for the app.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

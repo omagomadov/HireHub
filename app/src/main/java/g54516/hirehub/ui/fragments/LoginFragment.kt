@@ -11,12 +11,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.viewModelFactory
-import g54516.hirehub.model.LoginViewModel
-import g54516.hirehub.model.LoginViewModelFactory
 import g54516.hirehub.R
 import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
+import g54516.hirehub.model.LoginViewModel
+import g54516.hirehub.model.LoginViewModelFactory
 import java.util.*
 
 /**
@@ -33,6 +32,15 @@ class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginViewModel
     private lateinit var toast: Toast
 
+    /**
+     * Called to create the view hierarchy associated with the fragment.
+     * This method is called between onCreate(Bundle?) and onActivityCreated(Bundle?).
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate views.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return Return the View for the fragment's UI, or null.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +63,8 @@ class LoginFragment : Fragment() {
 
         // Initialize the LoginViewModel.
         viewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+
+        binding.lifecycleOwner = this
 
         viewModel.isEmailValid.observe(viewLifecycleOwner, Observer { isEmailValid ->
             if (viewModel.displayToast.value == true) {
@@ -83,7 +93,7 @@ class LoginFragment : Fragment() {
      */
     private fun saveEmail() {
         viewModel.setDisplayToast(true)
-        viewModel.save(Date(), binding.loginEmail.text.toString())
+        viewModel.checkEmail(binding.loginEmail.text.toString(), Date())
         viewModel.setDisplayToast(false)
     }
 
