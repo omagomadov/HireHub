@@ -1,4 +1,4 @@
-package g54516.hireHub.database
+package g54516.hirehub.database
 
 import androidx.room.TypeConverter
 import java.util.Date

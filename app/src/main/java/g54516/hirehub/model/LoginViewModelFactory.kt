@@ -1,4 +1,4 @@
-package g54516.hireHub.model
+package g54516.hirehub.model
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

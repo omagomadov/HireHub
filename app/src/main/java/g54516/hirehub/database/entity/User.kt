@@ -1,4 +1,4 @@
-package g54516.hireHub.database.entity
+package g54516.hirehub.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

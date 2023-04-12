@@ -1,12 +1,12 @@
-package g54516.hireHub.database
+package g54516.hirehub.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import g54516.hireHub.database.dao.UserDao
-import g54516.hireHub.database.entity.User
+import g54516.hirehub.database.dao.UserDao
+import g54516.hirehub.database.entity.User
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)

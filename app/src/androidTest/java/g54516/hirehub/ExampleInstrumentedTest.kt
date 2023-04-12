@@ -1,4 +1,4 @@
-package g54516.hireHub
+package g54516.hirehub
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

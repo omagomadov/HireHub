@@ -1,4 +1,4 @@
-package g54516.hireHub.ui.fragments
+package g54516.hirehub.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

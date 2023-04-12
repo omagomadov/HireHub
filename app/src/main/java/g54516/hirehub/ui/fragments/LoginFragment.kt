@@ -1,4 +1,4 @@
-package g54516.hireHub.ui.fragments
+package g54516.hirehub.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import g54516.hireHub.model.LoginViewModel
-import g54516.hireHub.model.LoginViewModelFactory
+import g54516.hirehub.model.LoginViewModel
+import g54516.hirehub.model.LoginViewModelFactory
 import g54516.hirehub.R
 import g54516.hirehub.databinding.FragmentLoginBinding
 import java.util.*

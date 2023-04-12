@@ -1,12 +1,9 @@
-package g54516.hireHub.model
+package g54516.hirehub.model
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import g54516.hireHub.database.HireHubDB
-import g54516.hireHub.database.entity.User
 import java.util.Date
 
 /**
