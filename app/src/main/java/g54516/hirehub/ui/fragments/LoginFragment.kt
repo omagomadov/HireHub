@@ -11,9 +11,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
 import g54516.hirehub.model.LoginViewModel
 import g54516.hirehub.model.LoginViewModelFactory
 import g54516.hirehub.R
+import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
 import java.util.*
 
@@ -29,7 +31,6 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
-    private lateinit var viewModelFactory : LoginViewModelFactory
     private lateinit var toast: Toast
 
     override fun onCreateView(
@@ -37,13 +38,22 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        // Get a reference to the binding object and inflate the fragment views.
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_login, container, false)
         binding.loginButton.setOnClickListener {
             saveEmail()
         }
 
-        viewModelFactory = LoginViewModelFactory(requireNotNull(this.activity).application)
+        // Get the application context.
+        val application = requireNotNull(this.activity).application
+
+        // Get instance of UserDAO.
+        val database = HireHubDB.getInstance(application).userDao
+        // Get instance of LoginViewModel.
+        val viewModelFactory = LoginViewModelFactory(database, application)
+
+        // Initialize the LoginViewModel.
         viewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
 
         viewModel.isEmailValid.observe(viewLifecycleOwner, Observer { isEmailValid ->

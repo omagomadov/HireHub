@@ -4,8 +4,9 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import g54516.hirehub.database.HireHubDB
+import g54516.hirehub.database.dao.UserDao
 
-class LoginViewModelFactory(private val database : HireHubDB,
+class LoginViewModelFactory(private val database : UserDao,
                             private val application: Application) : ViewModelProvider.Factory {
 
     override fun <T: ViewModel> create(modelClass: Class<T>):T{
