@@ -9,9 +9,9 @@ import g54516.hirehub.database.entity.User
 interface UserDao {
 
     @Insert
-    fun insert(user : User)
+    suspend fun insert(user : User)
 
     @Update
-    fun update(user : User)
+    suspend fun update(user : User)
 
 }
