@@ -1,5 +1,7 @@
 package g54516.hirehub.database.dao
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -20,6 +22,12 @@ interface UserDao {
 
     @Query("SELECT * FROM User")
     suspend fun getAllUsers(): List<User>
+
+    // You don't need to specify 'suspend' because creating a LiveData instance is
+    // a non-blocking action that runs in the background and provides an asynchronous data stream
+    // that can be observed by the UI.
+    @Query("SELECT mail_address FROM User")
+    fun getAllEmails(): LiveData<List<String>>
 
     @Query("DELETE FROM User")
     suspend fun clear()

@@ -23,6 +23,8 @@ class LoginViewModel(
     val displayToast: LiveData<Boolean>
         get() = _displayToast
 
+    var emails : LiveData<List<String>> = database.getAllEmails()
+
     init {
         _isEmailValid.value = false
         _displayToast.value = false

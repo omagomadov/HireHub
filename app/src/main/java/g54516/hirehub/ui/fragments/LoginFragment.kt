@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -47,6 +49,8 @@ class LoginFragment : Fragment() {
         // Initialize the LoginViewModel.
         viewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
 
+        val loginView = binding.loginEmail
+
         binding.lifecycleOwner = this
 
         viewModel.isEmailValid.observe(viewLifecycleOwner, Observer { isEmailValid ->
@@ -62,6 +66,13 @@ class LoginFragment : Fragment() {
                     activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(view?.windowToken, 0)
             }
+        })
+
+        viewModel.emails.observe(viewLifecycleOwner, Observer { list ->
+            var adapter = ArrayAdapter(application,
+                android.R.layout.simple_dropdown_item_1line, list)
+            loginView.setAdapter(adapter)
+            adapter.notifyDataSetChanged()
         })
 
         return binding.root
