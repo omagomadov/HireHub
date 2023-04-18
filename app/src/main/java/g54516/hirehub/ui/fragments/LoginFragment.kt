@@ -18,29 +18,12 @@ import g54516.hirehub.model.LoginViewModel
 import g54516.hirehub.model.LoginViewModelFactory
 import java.util.*
 
-/**
- * Fragment for the login screen.
- *
- * @property binding The binding object that inflates
- * the layout and allows access to the UI components.
- * @property viewModel The [LoginViewModel] instance associated with this fragment.
- * @property toast A [Toast] object that displays messages to the user.
- */
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
     private lateinit var toast: Toast
 
-    /**
-     * Called to create the view hierarchy associated with the fragment.
-     * This method is called between onCreate(Bundle?) and onActivityCreated(Bundle?).
-     *
-     * @param inflater The LayoutInflater object that can be used to inflate views.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
-     * @return Return the View for the fragment's UI, or null.
-     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -84,13 +67,6 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    /**
-     * Saves the user's email address to the database when the 'login' button is clicked.
-     *
-     * This method is called by the click listener associated with the 'login' button in the layout file.
-     * It retrieves the email
-     * address entered by the user and calls the [LoginViewModel.save] method to save it to the database.
-     */
     private fun saveEmail() {
         viewModel.setDisplayToast(true)
         viewModel.checkEmail(binding.loginEmail.text.toString(), Date())

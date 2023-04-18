@@ -8,12 +8,6 @@ import androidx.room.TypeConverters
 import g54516.hirehub.database.dao.UserDao
 import g54516.hirehub.database.entity.User
 
-/**
- * A Room database that stores [User] objects.
- *
- * @constructor Creates a new instance of [HireHubDB].
- * @property userDao The DAO instance that provides access to the [User] table in the [HireHubDB] database.
- */
 @Database(entities = [User::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class HireHubDB : RoomDatabase() {
@@ -27,12 +21,6 @@ abstract class HireHubDB : RoomDatabase() {
         @Volatile
         private var INSTANCE: HireHubDB? = null
 
-        /**
-         * Returns a singleton instance of the [HireHubDB] database.
-         *
-         * @param context The context used to get the application context for creating the database.
-         * @return A singleton instance of the [HireHubDB] database.
-         */
         fun getInstance(context: Context): HireHubDB {
             synchronized(this) {
                 var instance = INSTANCE

@@ -5,13 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import g54516.hirehub.database.dao.UserDao
 
-/**
- * Factory class for creating instances of [LoginViewModel].
- * Allows for the injection of dependencies into the [LoginViewModel] constructor.
- *
- * @param database The [UserDao] instance used by the [LoginViewModel] to interact with the user data.
- * @param application The [Application] instance used by the [LoginViewModel] to access the application context.
- */
 class LoginViewModelFactory(
     private val database: UserDao,
     private val application: Application
