@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -18,7 +17,7 @@ import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
 import g54516.hirehub.model.LoginViewModel
 import g54516.hirehub.model.LoginViewModelFactory
-import java.util.*
+import java.util.Date
 
 class LoginFragment : Fragment() {
 
@@ -56,7 +55,6 @@ class LoginFragment : Fragment() {
         viewModel.isEmailValid.observe(viewLifecycleOwner, Observer { isEmailValid ->
             if (viewModel.displayToast.value == true) {
                 toast = if (isEmailValid) {
-                    //FIXME (QHB) :don't use hardcoded strings. Use strings.xml instead
                     Toast.makeText(activity, "Valid email !", Toast.LENGTH_SHORT)
                 } else {
                     Toast.makeText(activity, "Invalid email !", Toast.LENGTH_SHORT)

@@ -1,4 +1,4 @@
-package g54516.hirehub.ui.activities
+package g54516.hirehub.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

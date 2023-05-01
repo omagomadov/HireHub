@@ -1,7 +1,7 @@
 package g54516.hirehub.database
 
 import androidx.room.TypeConverter
-import java.util.*
+import java.util.Date
 
 class Converters {
 

@@ -11,8 +11,7 @@ import kotlinx.coroutines.launch
 import java.util.Date
 
 class LoginViewModel(
-    //FIXME (QHB) :could be private.
-    val database: UserDao,
+    private val database: UserDao,
     application: Application
 ) : AndroidViewModel(application) {
 
@@ -34,8 +33,6 @@ class LoginViewModel(
     fun checkEmail(email: String, date: Date) {
         _isEmailValid.value = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         if (isEmailValid.value == true) {
-            //FIXME (QHB) : you can use coroutines only if you can explain them during the examination.
-            // Otherwise you can use the option allowMainThreadQueries when you build the database.
             viewModelScope.launch {
                 if (database.getUserByEmail(email) == null) {
                     insert(email, date)
@@ -47,9 +44,6 @@ class LoginViewModel(
                         }
                     }
                 }
-                //FIXME (QHB) :use Log.d instead of println (or better, just use the debugger
-                // instead of debug printing)
-                println(database.getAllUsers().toString())
             }
         }
     }
