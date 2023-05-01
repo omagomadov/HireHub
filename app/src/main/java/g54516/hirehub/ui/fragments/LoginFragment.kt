@@ -56,6 +56,7 @@ class LoginFragment : Fragment() {
         viewModel.isEmailValid.observe(viewLifecycleOwner, Observer { isEmailValid ->
             if (viewModel.displayToast.value == true) {
                 toast = if (isEmailValid) {
+                    //FIXME (QHB) :don't use hardcoded strings. Use strings.xml instead
                     Toast.makeText(activity, "Valid email !", Toast.LENGTH_SHORT)
                 } else {
                     Toast.makeText(activity, "Invalid email !", Toast.LENGTH_SHORT)

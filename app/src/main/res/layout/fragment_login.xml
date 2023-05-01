@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="g54516.Hirehub.LoginFragment">
 
+    <!-- FIXME (QHB) : You could use constraint layout (if not, that's ok but you
+    will need to justify during the exam) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
