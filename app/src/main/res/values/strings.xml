@@ -11,4 +11,10 @@
     <string name="login_text">Login</string>
     <string name="login_title_text">Login</string>
     <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_hint">Se connecter</string>
+    <string name="password_content_description">Veuillez entrer votre mot de passe</string>
+    <string name="signup_password_forgot">Mot de passe oublié ?</string>
+    <string name="signup_create_new_question">Pas encore de compte?</string>
+    <string name="signup_create_account">Créer un compte</string>
 </resources>
