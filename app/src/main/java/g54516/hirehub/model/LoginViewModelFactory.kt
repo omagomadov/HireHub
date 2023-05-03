@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import g54516.hirehub.database.dao.UserDao
+import g54516.hirehub.model.viewmodel.LoginViewModel
 
 class LoginViewModelFactory(
     private val database: UserDao,

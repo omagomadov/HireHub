@@ -8,10 +8,19 @@
         android:id="@+id/loginFragment"
         android:name="g54516.hirehub.ui.fragments.LoginFragment"
         android:label="@string/fragment_login_title"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="g54516.hirehub.ui.fragments.AboutFragment"
         android:label="@string/fragment_about_title"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="g54516.hirehub.ui.fragments.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
 </navigation>

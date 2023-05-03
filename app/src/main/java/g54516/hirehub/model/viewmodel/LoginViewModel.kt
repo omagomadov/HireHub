@@ -1,4 +1,4 @@
-package g54516.hirehub.model
+package g54516.hirehub.model.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -9,6 +9,7 @@ import g54516.hirehub.R
 import g54516.hirehub.database.dao.UserDao
 import g54516.hirehub.database.entity.User
 import g54516.hirehub.database.service.AuthService
+import g54516.hirehub.model.Utils.isEmailValid
 import kotlinx.coroutines.launch
 import java.util.Date
 
@@ -80,10 +81,6 @@ class LoginViewModel(
                 }
             }
         }
-    }
-
-    private fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     private fun isFormCompleted(email: String, password: String): Boolean {

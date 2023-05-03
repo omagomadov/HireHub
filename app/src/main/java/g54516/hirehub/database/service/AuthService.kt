@@ -18,6 +18,10 @@ object AuthService {
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
+    fun sendResetPasswordEmail(email: String): Task<Void> {
+        return auth.sendPasswordResetEmail(email)
+    }
+
     fun signOut() {
         auth.signOut()
     }

@@ -12,11 +12,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
-import g54516.hirehub.model.LoginViewModel
 import g54516.hirehub.model.LoginViewModelFactory
+import g54516.hirehub.model.viewmodel.LoginViewModel
 import java.util.Date
 
 class LoginFragment : Fragment() {
@@ -37,6 +38,10 @@ class LoginFragment : Fragment() {
         // Set on click listener on login button
         binding.loginButton.setOnClickListener {
             signIn()
+        }
+
+        binding.passwordForgot.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
 
         // Get the application context.
