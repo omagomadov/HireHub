@@ -17,4 +17,8 @@
     <string name="signup_password_forgot">Mot de passe oublié ?</string>
     <string name="signup_create_new_question">Pas encore de compte?</string>
     <string name="signup_create_account">Créer un compte</string>
+    <string name="signin_successful_notification">Connexion réussie!</string>
+    <string name="signin_unsuccessful_notification">Connexion échouée!</string>
+    <string name="signin_invalide_email">Veuillez entrer un email au bon format</string>
+    <string name="form_not_completed">"Veuillez complèter tout les champs"</string>
 </resources>

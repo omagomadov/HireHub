@@ -33,8 +33,10 @@ class LoginFragment : Fragment() {
         // Get a reference to the binding object and inflate the fragment views.
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_login, container, false)
+
+        // Set on click listener on login button
         binding.loginButton.setOnClickListener {
-            saveEmail()
+            signIn()
         }
 
         // Get the application context.
@@ -52,35 +54,34 @@ class LoginFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        viewModel.isEmailValid.observe(viewLifecycleOwner, Observer { isEmailValid ->
+        viewModel.emails.observe(viewLifecycleOwner, Observer { list ->
+            var adapter = ArrayAdapter(
+                application,
+                android.R.layout.simple_dropdown_item_1line, list
+            )
+            loginView.setAdapter(adapter)
+            adapter.notifyDataSetChanged()
+        })
+
+        viewModel.notification.observe(viewLifecycleOwner, Observer { message ->
             if (viewModel.displayToast.value == true) {
-                toast = if (isEmailValid) {
-                    Toast.makeText(activity, "Valid email !", Toast.LENGTH_SHORT)
-                } else {
-                    Toast.makeText(activity, "Invalid email !", Toast.LENGTH_SHORT)
-                }
-                toast.show()
+                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                 // Hide 'virtual keyboard' after finished
                 val imm =
                     activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(view?.windowToken, 0)
+                viewModel.setDisplayToast(false)
             }
-        })
-
-        viewModel.emails.observe(viewLifecycleOwner, Observer { list ->
-            var adapter = ArrayAdapter(application,
-                android.R.layout.simple_dropdown_item_1line, list)
-            loginView.setAdapter(adapter)
-            adapter.notifyDataSetChanged()
         })
 
         return binding.root
     }
 
-    private fun saveEmail() {
-        viewModel.setDisplayToast(true)
-        viewModel.checkEmail(binding.loginEmail.text.toString(), Date())
-        viewModel.setDisplayToast(false)
+    private fun signIn() {
+        viewModel.signIn(
+            binding.loginEmail.text.toString(),
+            binding.loginPassword.text.toString(), Date()
+        )
     }
 
 }
