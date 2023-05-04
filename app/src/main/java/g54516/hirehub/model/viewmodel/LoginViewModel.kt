@@ -89,6 +89,7 @@ class LoginViewModel(
             return false
         } else if (!isEmailValid(email)) {
             _notification.value = application.getString(R.string.signin_invalide_email)
+            return false
         }
         return true
     }

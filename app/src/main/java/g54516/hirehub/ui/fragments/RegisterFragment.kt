@@ -5,10 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.databinding.FragmentRegisterBinding
+import g54516.hirehub.model.factories.RegisterViewModelFactory
 import g54516.hirehub.model.viewmodel.RegisterViewModel
 
 class RegisterFragment : Fragment() {
@@ -23,15 +28,46 @@ class RegisterFragment : Fragment() {
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_register, container, false)
 
+        val application = requireNotNull(this.activity).application
+
+        val viewModelFactory = RegisterViewModelFactory(application)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
+
+        viewModel.notification.observe(viewLifecycleOwner, Observer { message ->
+            if(viewModel.displayToast.value == true) {
+                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                viewModel.setDisplayToast(false)
+            }
+        })
+
+        viewModel.isRegistered.observe(viewLifecycleOwner, Observer { isRegistered ->
+            if(isRegistered) {
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            }
+        })
+
         binding.registerQuestionLink.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
         binding.registerButton.setOnClickListener {
-            //todo
+            signUp()
         }
 
         return binding.root
+    }
+
+    private fun signUp() {
+        val gender = when(val checkedButton = binding.genderRadioGroup.checkedRadioButtonId) {
+            -1 -> ""
+            else -> binding.root.findViewById<RadioButton>(checkedButton).text.toString()
+        }
+        viewModel.register(binding.inputRegisterMail.text.toString(),
+            binding.inputRegisterPassword.text.toString(),
+            binding.inputRegisterConfirmPassword.text.toString(),
+            binding.inputRegisterPhone.text.toString(),
+            gender)
     }
 
 }

@@ -13,10 +13,16 @@
     <string name="password_hint">Mot de passe</string>
     <string name="login_button_hint">Se connecter</string>
     <string name="password_content_description">Veuillez entrer votre mot de passe</string>
+
     <!-- Signup -->
+    <string name="signup_successful_notification">Inscription réussie!</string>
+    <string name="signup_unsuccessful_notification">Inscription échouée!</string>
     <string name="signup_password_forgot">Mot de passe oublié ?</string>
     <string name="signup_create_new_question">Pas encore de compte?</string>
     <string name="signup_create_account">Créer un compte</string>
+    <string name="signup_gender_unsuccessful">Veuillez choisir un genre</string>
+    <string name="signup_password_not_same">Les mots de passes sont pas identiques</string>
+    <string name="signup_phone_number">Le numéro de téléphone renseigné n\est pas belge</string>
 
     <!-- Signin -->
     <string name="signin_successful_notification">Connexion réussie!</string>

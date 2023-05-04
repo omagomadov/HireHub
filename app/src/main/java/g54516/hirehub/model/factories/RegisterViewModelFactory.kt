@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import g54516.hirehub.model.viewmodel.RegisterViewModel
 
-class RegisterModelFactory(private val application: Application) : ViewModelProvider.Factory {
+class RegisterViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
