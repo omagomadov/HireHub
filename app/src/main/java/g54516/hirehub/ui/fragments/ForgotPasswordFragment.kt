@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.databinding.FragmentForgotPasswordBinding
-import g54516.hirehub.model.ForgotPasswordModelFactory
+import g54516.hirehub.model.factories.ForgotPasswordModelFactory
 import g54516.hirehub.model.viewmodel.ForgotPasswordViewModel
 
 class ForgotPasswordFragment : Fragment() {
