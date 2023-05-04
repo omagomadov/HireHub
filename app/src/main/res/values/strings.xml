@@ -10,7 +10,7 @@
     <string name="login_text">Login</string>
     <string name="login_title_text">Login</string>
     <string name="email_hint">Email</string>
-    <string name="password_hint">Password</string>
+    <string name="password_hint">Mot de passe</string>
     <string name="login_button_hint">Se connecter</string>
     <string name="password_content_description">Veuillez entrer votre mot de passe</string>
     <!-- Signup -->
@@ -29,4 +29,13 @@
     <string name="forgot_password_button">Envoyer un lien de réinitialisation</string>
     <string name="forgot_password_successful">Un mail de réinitialisation a été envoyer</string>
     <string name="forgot_password_unsuccessful">Cette utilisateur n\'existe pas</string>
+    <string name="register_title_text">Register</string>
+    <string name="register_button_hint">Créer un compte</string>
+    <string name="register_connect_new_question">Vous avez déjà un compte?</string>
+    <string name="register_connect_account">Se connecter</string>
+    <string name="password_confirm_hint">Confirmer le mot de passe</string>
+    <string name="phone_hint">Numéro de téléphone</string>
+    <string name="radio_button_male">Homme</string>
+    <string name="radio_button_female">Femme</string>
+    <string name="register_gender">Genre</string>
 </resources>
