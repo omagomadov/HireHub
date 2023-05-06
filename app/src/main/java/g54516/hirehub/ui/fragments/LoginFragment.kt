@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
+import g54516.hirehub.model.Utils
 import g54516.hirehub.model.factories.LoginViewModelFactory
 import g54516.hirehub.model.viewmodel.LoginViewModel
 import java.util.Date
@@ -24,13 +25,11 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
-    private lateinit var toast: Toast
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Get a reference to the binding object and inflate the fragment views.
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_login, container, false)
@@ -80,6 +79,15 @@ class LoginFragment : Fragment() {
                     activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(view?.windowToken, 0)
                 viewModel.setDisplayToast(false)
+            }
+        })
+
+        viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
+            if (isConnected) {
+                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                Utils.getNavigation().menu.setGroupVisible(R.id.logged_menu, true)
+            } else {
+                Utils.getNavigation().menu.setGroupVisible(R.id.logged_menu, false)
             }
         })
 

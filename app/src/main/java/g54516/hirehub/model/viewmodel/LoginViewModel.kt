@@ -28,10 +28,15 @@ class LoginViewModel(
     val notification: LiveData<String>
         get() = _notification
 
+    private var _isConnected = MutableLiveData<Boolean>()
+    val isConnected: LiveData<Boolean>
+        get() = _isConnected
+
     var emails: LiveData<List<String>> = database.getAllEmails()
 
     init {
         _displayToast.value = false
+        _isConnected.value = false
     }
 
     fun signIn(email: String, password: String, date: Date) {
@@ -41,6 +46,7 @@ class LoginViewModel(
                 if (task.isSuccessful) {
                     _notification.value = application
                         .getString(R.string.signin_successful_notification)
+                    _isConnected.value = true
                     updateLocalDatabase(email, date)
                 } else {
                     _notification.value = application

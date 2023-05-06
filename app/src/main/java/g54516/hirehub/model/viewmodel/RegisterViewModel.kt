@@ -1,7 +1,6 @@
 package g54516.hirehub.model.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -32,16 +31,20 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         _isRegistered.value = false
     }
 
-    fun register(email: String, password: String, confirmPassword: String,
-                 phone: String, gender: String) {
+    fun register(
+        email: String, password: String, confirmPassword: String,
+        phone: String, gender: String
+    ) {
         _displayToast.value = true
-        if(isFormCompleted(email, password, confirmPassword, phone, gender)) {
+        if (isFormCompleted(email, password, confirmPassword, phone, gender)) {
             AuthService.signUp(email, password).addOnCompleteListener { task ->
-                if(task.isSuccessful) {
-                    _notification.value = application.getString(R.string.signup_successful_notification)
+                if (task.isSuccessful) {
+                    _notification.value =
+                        application.getString(R.string.signup_successful_notification)
                     _isRegistered.value = true
                 } else {
-                    _notification.value = application.getString(R.string.signup_unsuccessful_notification)
+                    _notification.value =
+                        application.getString(R.string.signup_unsuccessful_notification)
                 }
             }
         }
@@ -51,21 +54,23 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         _displayToast.value = isDisplayed
     }
 
-    private fun isFormCompleted(email: String, password: String, confirmPassword: String,
-                               phone: String, gender: String): Boolean {
-        if(email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phone.isEmpty()) {
+    private fun isFormCompleted(
+        email: String, password: String, confirmPassword: String,
+        phone: String, gender: String
+    ): Boolean {
+        if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phone.isEmpty()) {
             _notification.value = application.getString(R.string.form_not_completed)
             return false
-        } else if(!isEmailValid(email)) {
+        } else if (!isEmailValid(email)) {
             _notification.value = application.getString(R.string.signin_invalide_email)
             return false
-        } else if(!isPasswordSame(password, confirmPassword)) {
+        } else if (!isPasswordSame(password, confirmPassword)) {
             _notification.value = application.getString(R.string.signup_password_not_same)
             return false
-        } else if(!isPhoneNumberBelgian(phone)) {
+        } else if (!isPhoneNumberBelgian(phone)) {
             _notification.value = application.getString(R.string.signup_phone_number)
             return false
-        } else if(gender.isEmpty()) {
+        } else if (gender.isEmpty()) {
             _notification.value = application.getString(R.string.signup_gender_unsuccessful)
             return false
         }

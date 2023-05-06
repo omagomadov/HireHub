@@ -44,4 +44,8 @@
     <string name="radio_button_male">Homme</string>
     <string name="radio_button_female">Femme</string>
     <string name="register_gender">Genre</string>
+    <string name="profil_title">Profile</string>
+    <string name="meeting_title">Rendez-vous</string>
+    <string name="setting_title">Paramètres</string>
+    <string name="logout_title">Déconnexion</string>
 </resources>

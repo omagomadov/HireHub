@@ -1,13 +1,13 @@
 package g54516.hirehub.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -35,14 +35,14 @@ class RegisterFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
 
         viewModel.notification.observe(viewLifecycleOwner, Observer { message ->
-            if(viewModel.displayToast.value == true) {
+            if (viewModel.displayToast.value == true) {
                 Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                 viewModel.setDisplayToast(false)
             }
         })
 
         viewModel.isRegistered.observe(viewLifecycleOwner, Observer { isRegistered ->
-            if(isRegistered) {
+            if (isRegistered) {
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         })
@@ -59,15 +59,17 @@ class RegisterFragment : Fragment() {
     }
 
     private fun signUp() {
-        val gender = when(val checkedButton = binding.genderRadioGroup.checkedRadioButtonId) {
+        val gender = when (val checkedButton = binding.genderRadioGroup.checkedRadioButtonId) {
             -1 -> ""
             else -> binding.root.findViewById<RadioButton>(checkedButton).text.toString()
         }
-        viewModel.register(binding.inputRegisterMail.text.toString(),
+        viewModel.register(
+            binding.inputRegisterMail.text.toString(),
             binding.inputRegisterPassword.text.toString(),
             binding.inputRegisterConfirmPassword.text.toString(),
             binding.inputRegisterPhone.text.toString(),
-            gender)
+            gender
+        )
     }
 
 }
