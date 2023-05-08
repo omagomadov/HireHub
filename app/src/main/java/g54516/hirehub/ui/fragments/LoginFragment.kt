@@ -85,9 +85,11 @@ class LoginFragment : Fragment() {
         viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
             if (isConnected) {
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                Utils.getNavigation().menu.setGroupVisible(R.id.logged_menu, true)
+                Utils.displayLoggedMenu()
+                Utils.displayBottomBarNavigation()
             } else {
-                Utils.getNavigation().menu.setGroupVisible(R.id.logged_menu, false)
+                Utils.hideBottomBarNavigation()
+                Utils.hideLoggedMenu()
             }
         })
 
