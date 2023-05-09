@@ -143,35 +143,6 @@
                     tools:layout_editor_absoluteX="15dp"
                     tools:layout_editor_absoluteY="460dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/register_question_connect"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/register_connect_new_question"
-                        tools:layout_editor_absoluteX="45dp"
-                        tools:layout_editor_absoluteY="542dp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/register_question_link"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contextClickable="true"
-                        android:text="@string/register_connect_account"
-                        android:textColor="@color/link_color"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="278dp"
-                        tools:layout_editor_absoluteY="542dp" />
-
-                </LinearLayout>
-
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.databinding.FragmentRegisterBinding
 import g54516.hirehub.model.factories.RegisterViewModelFactory
@@ -43,13 +42,9 @@ class RegisterFragment : Fragment() {
 
         viewModel.isRegistered.observe(viewLifecycleOwner, Observer { isRegistered ->
             if (isRegistered) {
-                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                // call main activity
             }
         })
-
-        binding.registerQuestionLink.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-        }
 
         binding.registerButton.setOnClickListener {
             signUp()

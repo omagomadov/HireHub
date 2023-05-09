@@ -1,6 +1,7 @@
 package g54516.hirehub.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
 import g54516.hirehub.model.factories.LoginViewModelFactory
 import g54516.hirehub.model.viewmodel.LoginViewModel
+import g54516.hirehub.ui.activities.HomeActivity
 import java.util.Date
 
 class LoginFragment : Fragment() {
@@ -35,7 +37,10 @@ class LoginFragment : Fragment() {
 
         // Set on click listener on login button
         binding.loginButton.setOnClickListener {
-            signIn()
+            viewModel.signIn(
+                binding.loginEmail.text.toString(),
+                binding.loginPassword.text.toString(), Date()
+            )
         }
 
         binding.passwordForgot.setOnClickListener {
@@ -83,18 +88,11 @@ class LoginFragment : Fragment() {
 
         viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
             if (isConnected) {
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                startActivity(Intent(activity, HomeActivity::class.java))
             }
         })
 
         return binding.root
-    }
-
-    private fun signIn() {
-        viewModel.signIn(
-            binding.loginEmail.text.toString(),
-            binding.loginPassword.text.toString(), Date()
-        )
     }
 
 }
