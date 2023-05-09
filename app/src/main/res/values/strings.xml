@@ -54,4 +54,9 @@
     <string name="setting_menu">Setting</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_title">Bienvenue</string>
+    <string name="income_meeting_title">Rendez-vous à venir</string>
+    <string name="passed_meeting_title">Rendez-vous passées</string>
+    <string name="home_horizontale_description_income">Les rendez-vous qui sont à venir</string>
+    <string name="home_horizontale_description_passed">Les rendez-vous qui sont passées</string>
 </resources>

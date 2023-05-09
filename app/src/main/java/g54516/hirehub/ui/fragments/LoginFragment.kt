@@ -16,7 +16,6 @@ import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
-import g54516.hirehub.model.Utils
 import g54516.hirehub.model.factories.LoginViewModelFactory
 import g54516.hirehub.model.viewmodel.LoginViewModel
 import java.util.Date
@@ -85,11 +84,6 @@ class LoginFragment : Fragment() {
         viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
             if (isConnected) {
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                Utils.displayLoggedMenu()
-                Utils.displayBottomBarNavigation()
-            } else {
-                Utils.hideBottomBarNavigation()
-                Utils.hideLoggedMenu()
             }
         })
 
