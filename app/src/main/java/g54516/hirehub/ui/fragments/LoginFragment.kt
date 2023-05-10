@@ -19,7 +19,7 @@ import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentLoginBinding
 import g54516.hirehub.model.factories.LoginViewModelFactory
 import g54516.hirehub.model.viewmodel.LoginViewModel
-import g54516.hirehub.ui.activities.HomeActivity
+import g54516.hirehub.ui.activities.MainActivity
 import java.util.Date
 
 class LoginFragment : Fragment() {
@@ -88,7 +88,8 @@ class LoginFragment : Fragment() {
 
         viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
             if (isConnected) {
-                startActivity(Intent(activity, HomeActivity::class.java))
+                startActivity(Intent(activity, MainActivity::class.java))
+                activity?.finish()
             }
         })
 

@@ -21,6 +21,11 @@
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/home_navigation" />
 
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu="@menu/bottom_bar" />
+
         </LinearLayout>
 
     </androidx.drawerlayout.widget.DrawerLayout>
