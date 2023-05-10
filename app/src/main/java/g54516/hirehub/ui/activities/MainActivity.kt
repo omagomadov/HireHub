@@ -22,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.topBar)
     }
 
+    override fun onBackPressed() {
+        navController.navigate(R.id.homeFragment)
+        binding.bottomNavigation.selectedItemId = R.id.home
+    }
+
     private fun setupBottomBarSelectListener() {
         // Listeners when clicked on the corresponding menu in bottom bar
         binding.bottomNavigation.setOnItemSelectedListener { item ->
