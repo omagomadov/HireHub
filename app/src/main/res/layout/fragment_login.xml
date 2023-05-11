@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="?attr/actionBarSize"
     tools:context=".ui.fragments.LoginFragment">
 
 
@@ -25,16 +26,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/login_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin"
-                    android:fontFamily="serif-monospace"
                     android:text="@string/login_title_text"
                     android:textAlignment="center"
-                    android:textSize="34sp"
-                    android:typeface="normal" />
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_email"
@@ -117,7 +117,7 @@
                         android:id="@+id/login_question_link"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="2dp"
                         android:layout_marginEnd="64dp"
                         android:contextClickable="true"
                         android:text="@string/signup_create_account"
