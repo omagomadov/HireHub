@@ -1,6 +1,7 @@
 package g54516.hirehub.ui.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -30,15 +31,28 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomBarSelectListener() {
         // Listeners when clicked on the corresponding menu in bottom bar
         binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.home -> {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
+
                 R.id.search -> {
-                    navController.navigate(R.id.action_homeFragment_to_searchFragment)
+                    navController.navigate(R.id.searchFragment)
                     true
                 }
+
+                R.id.message -> {
+                    navController.navigate(R.id.messageFragment)
+                    true
+                }
+
+                R.id.setting -> {
+                    navController.navigate(R.id.settingFragment)
+                    Log.i("setting", "clicked")
+                    true
+                }
+
                 else -> false
             }
         }
@@ -48,13 +62,8 @@ class MainActivity : AppCompatActivity() {
         // Listeners when 're-clicked' on the corresponding menu in bottom bar
         // (if not set -> app crash !!)
         binding.bottomNavigation.setOnItemReselectedListener { item ->
-            when(item.itemId) {
-                R.id.home -> {
-                    true
-                }
-                R.id.search -> {
-                    true
-                }
+            when (item.itemId) {
+                R.id.home, R.id.search, R.id.message, R.id.setting -> true
                 else -> false
             }
         }

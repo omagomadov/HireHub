@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             // 'android.R.id.home' is the 'back button' of Android
             // Don't confuse it with the ID in the resources.
             // android.R.id.home != R.id.home
@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

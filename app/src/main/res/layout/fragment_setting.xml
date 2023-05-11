@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingTop="?attr/actionBarSize"
-    tools:context=".ui.fragments.SearchFragment">
+    tools:context=".ui.fragments.SettingFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:text="Search"
+        android:text="Setting"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold" />

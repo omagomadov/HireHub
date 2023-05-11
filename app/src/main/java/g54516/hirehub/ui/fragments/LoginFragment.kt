@@ -64,8 +64,6 @@ class LoginFragment : Fragment() {
 
         val loginView = binding.loginEmail
 
-        binding.lifecycleOwner = this
-
         viewModel.emails.observe(viewLifecycleOwner, Observer { list ->
             var adapter = ArrayAdapter(
                 application,
