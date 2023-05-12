@@ -32,16 +32,18 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun register(
-        email: String, password: String, confirmPassword: String,
+        email: String, firstname: String, lastname: String, password: String, confirmPassword: String,
         phone: String, gender: String
     ) {
         _displayToast.value = true
-        if (isFormCompleted(email, password, confirmPassword, phone, gender)) {
+        if (isFormCompleted(email, firstname, lastname, password, confirmPassword, phone, gender)) {
             AuthService.signUp(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     _notification.value =
                         application.getString(R.string.signup_successful_notification)
                     _isRegistered.value = true
+                    AuthService.signIn(email, password)
+                    // faire appel au repository User pour stocker dans la DB
                 } else {
                     _notification.value =
                         application.getString(R.string.signup_unsuccessful_notification)
@@ -55,23 +57,21 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     }
 
     private fun isFormCompleted(
-        email: String, password: String, confirmPassword: String,
+        email: String, firstname: String, lastname: String, password: String, confirmPassword: String,
         phone: String, gender: String
     ): Boolean {
-        if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phone.isEmpty()) {
-            _notification.value = application.getString(R.string.form_not_completed)
-            return false
-        } else if (!isEmailValid(email)) {
-            _notification.value = application.getString(R.string.signin_invalide_email)
-            return false
-        } else if (!isPasswordSame(password, confirmPassword)) {
-            _notification.value = application.getString(R.string.signup_password_not_same)
-            return false
-        } else if (!isPhoneNumberBelgian(phone)) {
-            _notification.value = application.getString(R.string.signup_phone_number)
-            return false
-        } else if (gender.isEmpty()) {
-            _notification.value = application.getString(R.string.signup_gender_unsuccessful)
+        val errorMessage = when {
+            email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phone.isEmpty()
+                    || firstname.isEmpty() || lastname.isEmpty() ->
+                R.string.form_not_completed
+            !isEmailValid(email) -> R.string.signin_invalide_email
+            !isPasswordSame(password, confirmPassword) -> R.string.signup_password_not_same
+            !isPhoneNumberBelgian(phone) -> R.string.signup_phone_number
+            gender.isEmpty() -> R.string.signup_gender_unsuccessful
+            else -> null
+        }
+        errorMessage?.let {
+            _notification.value = application.getString(it)
             return false
         }
         return true

@@ -1,5 +1,6 @@
 package g54516.hirehub.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import g54516.hirehub.R
 import g54516.hirehub.databinding.FragmentRegisterBinding
 import g54516.hirehub.model.factories.RegisterViewModelFactory
 import g54516.hirehub.model.viewmodel.RegisterViewModel
+import g54516.hirehub.ui.activities.MainActivity
 
 class RegisterFragment : Fragment() {
 
@@ -42,7 +44,8 @@ class RegisterFragment : Fragment() {
 
         viewModel.isRegistered.observe(viewLifecycleOwner, Observer { isRegistered ->
             if (isRegistered) {
-                // call main activity
+                startActivity(Intent(activity, MainActivity::class.java))
+                activity?.finish()
             }
         })
 
@@ -60,6 +63,8 @@ class RegisterFragment : Fragment() {
         }
         viewModel.register(
             binding.inputRegisterMail.text.toString(),
+            binding.inputFirstName.text.toString(),
+            binding.inputLastName.text.toString(),
             binding.inputRegisterPassword.text.toString(),
             binding.inputRegisterConfirmPassword.text.toString(),
             binding.inputRegisterPhone.text.toString(),

@@ -21,12 +21,7 @@ class LoginActivity : AppCompatActivity() {
         navController = findNavController(R.id.login_navigation_host)
         binding.topBar.title = ""
         setSupportActionBar(binding.topBar)
-        // Using 'elvis' operator to avoid NullPointerException
-        // If SupportActionBar is null -> it is not a problem because code will not be executed
-        supportActionBar?.let { actionBar ->
-            // Display the 'back button' on the top bar
-            actionBar.setDisplayHomeAsUpEnabled(true)
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

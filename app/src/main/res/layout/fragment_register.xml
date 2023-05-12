@@ -56,6 +56,40 @@
                     android:layout_width="@dimen/input_width"
                     android:layout_height="@dimen/input_height"
                     android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="@string/firstname_hint"
+                        android:background="@drawable/input_rounded"
+                        android:hint="@string/firstname_hint"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="@string/lastname_hint"
+                        android:background="@drawable/input_rounded"
+                        android:hint="@string/lastname_hint"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin"
                     app:passwordToggleEnabled="true">
 
