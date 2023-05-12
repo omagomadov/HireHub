@@ -27,8 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
                 android:background="@drawable/bottom_nav_rounded"
-                app:itemIconTint="@color/white"
-                app:itemTextColor="@color/white"
+                app:itemIconTint="@color/black"
+                app:itemTextColor="@color/black"
                 app:menu="@menu/bottom_bar" />
 
         </LinearLayout>

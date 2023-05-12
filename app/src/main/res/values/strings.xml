@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">HireHub</string>
-    <string name="about_title">About</string>
+    <string name="about_title">À propos</string>
     <string name="login_student">54516</string>
     <string name="firstName_student">Oumar</string>
     <string name="lastName_student">Magomadov</string>
-    <string name="about_student">Cette application a été developpé par :</string>
+    <string name="about_student">Cette application a été développer par Oumar Magomadov</string>
     <string name="fragment_login_title">Login</string>
     <string name="fragment_about_title">About</string>
     <string name="login_text">Login</string>
-    <string name="login_title_text">Login</string>
+    <string name="login_title_text">Connexion</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Mot de passe</string>
     <string name="login_button_hint">Se connecter</string>
@@ -36,7 +36,7 @@
     <string name="forgot_password_successful">Un mail de réinitialisation a été envoyer</string>
     <string name="forgot_password_unsuccessful">Cette utilisateur n\'existe pas</string>
 
-    <string name="register_title_text">Register</string>
+    <string name="register_title_text">Inscription</string>
     <string name="register_button_hint">Créer un compte</string>
     <string name="register_connect_new_question">Vous avez déjà un compte?</string>
     <string name="register_connect_account">Se connecter</string>
@@ -48,6 +48,8 @@
     <string name="profil_title">Profile</string>
     <string name="meeting_title">Rendez-vous</string>
     <string name="setting_title">Paramètres</string>
+    <string name="search_title">Recherche</string>
+    <string name="message_title">Messagerie</string>
     <string name="logout_title">Déconnexion</string>
     <string name="home_menu">Home</string>
     <string name="search_menu">Search</string>
@@ -59,6 +61,5 @@
     <string name="home_horizontale_description_income">Les rendez-vous qui sont à venir</string>
     <string name="home_horizontale_description_passed">Les rendez-vous qui sont passées</string>
     <string name="title_activity_login">LoginActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="application_info">HireHub V1.0</string>
 </resources>

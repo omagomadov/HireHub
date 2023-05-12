@@ -134,13 +134,16 @@
 
                 </RadioGroup>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/register_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin"
                     android:text="@string/register_button_hint"
                     app:cornerRadius="@dimen/corner_radius"
+                    app:icon="@drawable/baseline_send_24"
                     tools:layout_editor_absoluteX="15dp"
                     tools:layout_editor_absoluteY="460dp" />
 
