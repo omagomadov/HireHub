@@ -13,8 +13,6 @@
     <string name="password_hint">Mot de passe</string>
     <string name="login_button_hint">Se connecter</string>
     <string name="password_content_description">Veuillez entrer votre mot de passe</string>
-
-    <!-- Signup -->
     <string name="signup_successful_notification">Inscription réussie!</string>
     <string name="signup_unsuccessful_notification">Inscription échouée!</string>
     <string name="signup_password_forgot">Mot de passe oublié ?</string>
@@ -23,19 +21,14 @@
     <string name="signup_gender_unsuccessful">Veuillez choisir un genre</string>
     <string name="signup_password_not_same">Les mots de passes sont pas identiques</string>
     <string name="signup_phone_number">Le numéro de téléphone renseigné n\est pas belge</string>
-
-    <!-- Signin -->
-    <string name="signin_successful_notification">Connexion réussie!</string>
+    <string name="signin_successful_notification">Vous êtes connecté</string>
     <string name="signin_unsuccessful_notification">Connexion échouée!</string>
     <string name="signin_invalide_email">Veuillez entrer un email au bon format</string>
     <string name="form_not_completed">"Veuillez complèter tout les champs"</string>
-
-    <!-- ForgotPassword -->
     <string name="forgot_password_title">Reinitialser mot de passe</string>
     <string name="forgot_password_button">Envoyer un lien de réinitialisation</string>
     <string name="forgot_password_successful">Un mail de réinitialisation a été envoyer</string>
     <string name="forgot_password_unsuccessful">Cette utilisateur n\'existe pas</string>
-
     <string name="register_title_text">Inscription</string>
     <string name="register_button_hint">Créer un compte</string>
     <string name="register_connect_new_question">Vous avez déjà un compte?</string>
@@ -51,15 +44,15 @@
     <string name="search_title">Recherche</string>
     <string name="message_title">Messagerie</string>
     <string name="logout_title">Déconnexion</string>
-    <string name="home_menu">Home</string>
-    <string name="search_menu">Search</string>
-    <string name="message_menu">Message</string>
-    <string name="setting_menu">Setting</string>
+    <string name="home_menu">Accueil</string>
+    <string name="search_menu">Recherche</string>
+    <string name="message_menu">Messagerie</string>
+    <string name="setting_menu">Paramètre</string>
     <string name="home_title">Bienvenue</string>
     <string name="income_meeting_title">Rendez-vous à venir</string>
     <string name="passed_meeting_title">Rendez-vous passées</string>
     <string name="home_horizontale_description_income">Les rendez-vous qui sont à venir</string>
     <string name="home_horizontale_description_passed">Les rendez-vous qui sont passées</string>
-    <string name="title_activity_login">LoginActivity</string>
     <string name="application_info">HireHub V1.0</string>
+    <string name="logout_message">Vous avez été déconnecté</string>
 </resources>

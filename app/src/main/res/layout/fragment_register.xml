@@ -36,8 +36,9 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -45,15 +46,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="@string/email_hint"
-                        android:background="@color/white"
+                        android:background="@drawable/input_rounded"
                         android:hint="@string/email_hint"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin"
                     app:passwordToggleEnabled="true">
 
@@ -62,7 +64,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="password"
-                        android:background="@color/white"
+                        android:background="@drawable/input_rounded"
                         android:hint="@string/password_hint"
                         android:inputType="textPassword"
                         android:textColor="@color/black"
@@ -70,8 +72,9 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin"
                     app:passwordToggleEnabled="true">
 
@@ -80,7 +83,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="password"
-                        android:background="@color/white"
+                        android:background="@drawable/input_rounded"
                         android:hint="@string/password_confirm_hint"
                         android:inputType="textPassword"
                         android:textColor="@color/black"
@@ -88,8 +91,9 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -97,42 +101,51 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints="phone"
-                        android:background="@color/white"
+                        android:background="@drawable/input_rounded"
                         android:hint="@string/phone_hint"
                         android:inputType="phone"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textview.MaterialTextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin"
-                    android:text="@string/register_gender"
-                    android:textSize="16sp" />
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                <RadioGroup
-                    android:id="@+id/gender_radio_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/gender_male"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin"
-                        android:text="@string/radio_button_male" />
+                        android:gravity="center"
+                        android:text="@string/register_gender"
+                        android:textSize="16sp" />
 
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/gender_female"
-                        android:layout_width="wrap_content"
+                    <RadioGroup
+                        android:id="@+id/gender_radio_group"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin"
-                        android:text="@string/radio_button_female" />
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
 
-                </RadioGroup>
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/gender_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin"
+                            android:text="@string/radio_button_male" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/gender_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin"
+                            android:text="@string/radio_button_female" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/register_button"

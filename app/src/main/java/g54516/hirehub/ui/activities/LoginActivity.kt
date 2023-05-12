@@ -19,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         navController = findNavController(R.id.login_navigation_host)
+        binding.topBar.title = ""
         setSupportActionBar(binding.topBar)
         // Using 'elvis' operator to avoid NullPointerException
         // If SupportActionBar is null -> it is not a problem because code will not be executed

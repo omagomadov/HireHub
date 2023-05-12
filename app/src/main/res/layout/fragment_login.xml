@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:scrollIndicators="bottom">
 
@@ -40,8 +41,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
                     android:layout_margin="@dimen/margin">
 
                     <AutoCompleteTextView
@@ -49,7 +50,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="email"
-                        android:background="@color/white"
+                        android:background="@drawable/input_rounded"
                         android:ems="10"
                         android:hint="@string/email_hint"
                         android:imeOptions="flagNoFullscreen"
@@ -59,8 +60,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_width="@dimen/input_width"
+                    android:layout_height="@dimen/input_height"
                     android:layout_margin="@dimen/margin"
                     app:layout_constraintTop_toBottomOf="@+id/input_layout_email"
                     app:passwordToggleEnabled="true">
@@ -70,7 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="password"
-                        android:background="@color/white"
+                        android:background="@drawable/input_rounded"
                         android:hint="@string/password_hint"
                         android:inputType="textPassword"
                         android:textAlignment="textStart"
@@ -79,14 +80,13 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/password_forgot"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin"
                     android:contextClickable="true"
                     android:text="@string/signup_password_forgot"
                     android:textColor="@color/link_color"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/input_layout_password"
                     tools:layout_editor_absoluteX="0dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -94,7 +94,6 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="@dimen/button_width"
                     android:layout_height="@dimen/button_height"
-                    android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/margin"
                     android:layout_marginBottom="252dp"
                     android:hint="@string/login_button_hint"
@@ -105,7 +104,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:gravity="center_horizontal">
 
                     <com.google.android.material.textview.MaterialTextView

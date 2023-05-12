@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = findNavController(R.id.main_navigation_host)
+        binding.topBar.title = ""
         setupBottomBarSelectListener()
         setupBottomBarReselectListeners()
         setSupportActionBar(binding.topBar)
