@@ -1,7 +1,6 @@
 package g54516.hirehub.database.repository
 
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import g54516.hirehub.database.dto.UserDto
 import kotlinx.coroutines.tasks.await
@@ -9,14 +8,13 @@ import kotlinx.coroutines.tasks.await
 class UserRepository : Repository<UserDto> {
 
     override suspend fun get(id: String): UserDto? {
-        var user = UserDto()
+        var user: UserDto? = null
         Firebase.firestore
             .collection("User")
+            .document(id)
             .get()
             .addOnSuccessListener { result ->
-                if (!result.isEmpty) {
-                    user = result.toObjects<UserDto>()[0]
-                }
+                user = result.toObject(UserDto::class.java)
             }.await()
         return user
     }
