@@ -58,6 +58,10 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'
 
+    // Declare the dependency for the Cloud Firestore library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
     // Support libraries
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "androidx.fragment:fragment-ktx:1.5.7"

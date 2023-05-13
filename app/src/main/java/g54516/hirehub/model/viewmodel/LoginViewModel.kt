@@ -8,7 +8,9 @@ import androidx.lifecycle.viewModelScope
 import g54516.hirehub.R
 import g54516.hirehub.database.dao.UserDao
 import g54516.hirehub.database.entity.User
+import g54516.hirehub.database.repository.UserRepository
 import g54516.hirehub.database.service.AuthService
+import g54516.hirehub.model.UserManager
 import g54516.hirehub.model.Utils.isEmailValid
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -19,6 +21,8 @@ class LoginViewModel(
 ) : AndroidViewModel(application) {
 
     private val application = application
+
+    private val repository = UserRepository()
 
     private var _displayToast = MutableLiveData<Boolean>()
     val displayToast: LiveData<Boolean>
@@ -48,6 +52,7 @@ class LoginViewModel(
                         .getString(R.string.signin_successful_notification)
                     _isConnected.value = true
                     updateLocalDatabase(email, date)
+                    updateCurrentUser(email)
                 } else {
                     _notification.value = application
                         .getString(R.string.signin_unsuccessful_notification)
@@ -86,6 +91,12 @@ class LoginViewModel(
                     }
                 }
             }
+        }
+    }
+
+    private fun updateCurrentUser(email: String) {
+        viewModelScope.launch {
+            UserManager.initialize(repository.get(email))
         }
     }
 
