@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import g54516.hirehub.R
 import g54516.hirehub.database.dao.UserDao
+import g54516.hirehub.database.dto.UserDto
 import g54516.hirehub.database.entity.User
 import g54516.hirehub.database.repository.UserRepository
 import g54516.hirehub.database.service.AuthService
@@ -21,7 +22,7 @@ class LoginViewModel(
 
     private val application = application
 
-    private val repository = UserRepository()
+    private val _repository = UserRepository()
 
     private var _displayToast = MutableLiveData<Boolean>()
     val displayToast: LiveData<Boolean>
@@ -63,29 +64,40 @@ class LoginViewModel(
         _displayToast.value = isDisplayed
     }
 
-    private fun insert(email: String, date: Date) {
+    private fun insert(user: UserDto, date: Date) {
         viewModelScope.launch {
-            val newUser = User(email = email, date = date)
+            val newUser = User(
+                email = user.email, firstName = user.firstName,
+                lastName = user.lastName, gender = user.gender,
+                phoneNumber = user.phoneNumber, date = date
+            )
             database.insert(newUser)
         }
     }
 
-    private fun update(userId: Int, email: String, date: Date) {
+    private fun update(userId: Int, user: UserDto, date: Date) {
         viewModelScope.launch {
-            val newUser = User(userId = userId, email = email, date = date)
+            val newUser = User(
+                userId = userId, email = user.email, firstName = user.firstName,
+                lastName = user.lastName, gender = user.gender,
+                phoneNumber = user.phoneNumber, date = date
+            )
             database.update(newUser)
         }
     }
 
     private fun updateLocalDatabase(email: String, date: Date) {
         viewModelScope.launch {
-            if (database.getUserByEmail(email) == null) {
-                insert(email, date)
-            } else {
-                val oldUser = database.getUserByEmail(email)
-                if (oldUser?.date != null) {
-                    if (oldUser.date.before(date)) {
-                        update(oldUser.userId, email, date)
+            var user = _repository.get(email)
+            if (user != null) {
+                if (database.getUserByEmail(email) == null) {
+                    insert(user, date)
+                } else {
+                    val oldUser = database.getUserByEmail(email)
+                    if (oldUser?.date != null) {
+                        if (oldUser.date.before(date)) {
+                            update(oldUser.userId, user, date)
+                        }
                     }
                 }
             }

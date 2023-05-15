@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import g54516.hirehub.R
+import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.databinding.FragmentRegisterBinding
 import g54516.hirehub.model.factories.RegisterViewModelFactory
 import g54516.hirehub.model.viewmodel.RegisterViewModel
@@ -31,7 +32,9 @@ class RegisterFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = RegisterViewModelFactory(application)
+        val database = HireHubDB.getInstance(application).userDao
+
+        val viewModelFactory = RegisterViewModelFactory(database, application)
 
         viewModel = ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
 

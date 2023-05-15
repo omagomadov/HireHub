@@ -6,15 +6,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import g54516.hirehub.R
+import g54516.hirehub.database.dao.UserDao
 import g54516.hirehub.database.dto.UserDto
+import g54516.hirehub.database.entity.User
 import g54516.hirehub.database.repository.UserRepository
 import g54516.hirehub.database.service.AuthService
 import g54516.hirehub.model.Utils.isEmailValid
 import g54516.hirehub.model.Utils.isPasswordSame
 import g54516.hirehub.model.Utils.isPhoneNumberBelgian
 import kotlinx.coroutines.launch
+import java.util.Date
 
-class RegisterViewModel(application: Application) : AndroidViewModel(application) {
+class RegisterViewModel(
+    private val database: UserDao,
+    application: Application
+) : AndroidViewModel(application) {
 
     private val application = application
 
@@ -55,7 +61,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                         application.getString(R.string.signup_successful_notification)
                     _isRegistered.value = true
                     AuthService.signIn(email, password)
-                    insert(UserDto(email, firstname, lastname, gender, phone.toInt()))
+                    insert(UserDto(email, firstname, lastname, gender, phone.toInt()), Date())
                 } else {
                     _notification.value =
                         application.getString(R.string.signup_unsuccessful_notification)
@@ -68,9 +74,16 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         _displayToast.value = isDisplayed
     }
 
-    private fun insert(user: UserDto) {
+    private fun insert(user: UserDto, date: Date) {
         viewModelScope.launch {
             _repository.add(user)
+            database.insert(
+                User(
+                    email = user.email,
+                    firstName = user.firstName, lastName = user.lastName,
+                    gender = user.gender, phoneNumber = user.phoneNumber, date = date
+                )
+            )
         }
     }
 
