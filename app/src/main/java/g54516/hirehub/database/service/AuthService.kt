@@ -22,6 +22,10 @@ object AuthService {
         return auth.sendPasswordResetEmail(email)
     }
 
+    fun getCurrentUser(): String {
+        return auth.currentUser?.email ?: ""
+    }
+
     fun signOut() {
         auth.signOut()
     }
