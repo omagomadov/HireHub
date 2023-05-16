@@ -41,6 +41,7 @@ class LoginFragment : Fragment() {
                 binding.loginEmail.text.toString(),
                 binding.loginPassword.text.toString(), Date()
             )
+            binding.progressBar1.visibility = View.VISIBLE
         }
 
         binding.passwordForgot.setOnClickListener {
@@ -86,6 +87,7 @@ class LoginFragment : Fragment() {
 
         viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
             if (isConnected) {
+                binding.progressBar1.visibility = View.GONE
                 startActivity(Intent(activity, MainActivity::class.java))
                 activity?.finish()
             }

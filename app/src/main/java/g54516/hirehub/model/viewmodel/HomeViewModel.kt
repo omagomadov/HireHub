@@ -1,6 +1,7 @@
 package g54516.hirehub.model.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,7 +23,9 @@ class HomeViewModel(
     init {
         viewModelScope.launch {
             _user.value = database.getUserByEmail(AuthService.getCurrentUser())
+            Log.i("UserLoggedIn", _user.value.toString())
         }
+        Log.i("UserLoggedIn", _user.value.toString())
     }
 
 }
