@@ -131,8 +131,8 @@
 
         </ScrollView>
 
-        <ProgressBar
-            android:id="@+id/progressBar1"
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressBar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"

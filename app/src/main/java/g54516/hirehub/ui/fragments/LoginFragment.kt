@@ -3,6 +3,7 @@ package g54516.hirehub.ui.fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,11 +38,11 @@ class LoginFragment : Fragment() {
 
         // Set on click listener on login button
         binding.loginButton.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             viewModel.signIn(
                 binding.loginEmail.text.toString(),
                 binding.loginPassword.text.toString(), Date()
             )
-            binding.progressBar1.visibility = View.VISIBLE
         }
 
         binding.passwordForgot.setOnClickListener {
@@ -82,12 +83,12 @@ class LoginFragment : Fragment() {
                     activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(view?.windowToken, 0)
                 viewModel.setDisplayToast(false)
+                binding.progressBar.visibility = View.GONE
             }
         })
 
         viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
             if (isConnected) {
-                binding.progressBar1.visibility = View.GONE
                 startActivity(Intent(activity, MainActivity::class.java))
                 activity?.finish()
             }
