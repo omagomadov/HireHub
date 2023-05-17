@@ -19,9 +19,14 @@ class SearchViewModel(
     val developers: LiveData<List<DeveloperDto>>
         get() = _developers
 
+    private var _developersOrdered = MutableLiveData<List<DeveloperDto>>()
+    val developersOrdered: LiveData<List<DeveloperDto>>
+        get() = _developersOrdered
+
     init {
         viewModelScope.launch {
             _developers.value = database.getAllDevelopers()
+            _developersOrdered.value = database.getDevelopersOrderedByRating()
         }
     }
 

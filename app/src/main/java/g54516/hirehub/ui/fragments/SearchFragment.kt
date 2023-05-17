@@ -35,10 +35,17 @@ class SearchFragment : Fragment() {
         val adapter = DeveloperAdapter()
 
         binding.searchCards.adapter = adapter
+        binding.bestRatingCards.adapter = adapter
 
         viewModel = ViewModelProvider(this, viewModelFactory)[SearchViewModel::class.java]
 
         viewModel.developers.observe(viewLifecycleOwner) {
+            it?.let {
+                adapter.developers = it
+            }
+        }
+
+        viewModel.developersOrdered.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.developers = it
             }
