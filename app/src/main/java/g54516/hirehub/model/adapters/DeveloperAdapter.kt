@@ -13,10 +13,10 @@ class DeveloperAdapter() :
     RecyclerView.Adapter<DeveloperViewHolder>() {
 
     var developers = listOf<DeveloperDto>()
-            set(value) {
-                field = value
-                notifyDataSetChanged()
-            }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeveloperViewHolder {
         val inflater = LayoutInflater.from(parent.context)

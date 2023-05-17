@@ -1,6 +1,5 @@
 package g54516.hirehub.model.viewholders
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import g54516.hirehub.database.dto.DeveloperDto
 import g54516.hirehub.databinding.DeveloperCardBinding

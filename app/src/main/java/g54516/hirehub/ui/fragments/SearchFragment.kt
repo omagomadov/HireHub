@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import g54516.hirehub.R
-import g54516.hirehub.database.dto.DeveloperDto
 import g54516.hirehub.database.repository.DeveloperRepository
 import g54516.hirehub.databinding.FragmentSearchBinding
 import g54516.hirehub.model.adapters.DeveloperAdapter
