@@ -92,7 +92,7 @@ class LoginViewModel(
 
     private fun updateLocalDatabase(email: String, date: Date) {
         viewModelScope.launch {
-            var user = _repository.get(email)
+            var user = _repository.getUserByEmail(email)
             if (user != null) {
                 if (database.getUserByEmail(email) == null) {
                     insert(user, date)

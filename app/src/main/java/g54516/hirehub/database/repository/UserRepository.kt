@@ -5,13 +5,13 @@ import com.google.firebase.ktx.Firebase
 import g54516.hirehub.database.dto.UserDto
 import kotlinx.coroutines.tasks.await
 
-class UserRepository : Repository<UserDto> {
+class UserRepository {
 
-    override suspend fun get(id: String): UserDto? {
+    suspend fun getUserByEmail(email: String): UserDto? {
         var user: UserDto? = null
         Firebase.firestore
             .collection("User")
-            .document(id)
+            .document(email)
             .get()
             .addOnSuccessListener { result ->
                 user = result.toObject(UserDto::class.java)
@@ -19,7 +19,7 @@ class UserRepository : Repository<UserDto> {
         return user
     }
 
-    override suspend fun add(entity: UserDto) {
+    fun add(entity: UserDto) {
         Firebase.firestore.collection("User")
             .document(entity.email)
             .set(
@@ -31,14 +31,6 @@ class UserRepository : Repository<UserDto> {
                     "phoneNumber" to entity.phoneNumber
                 )
             )
-    }
-
-    override suspend fun update(entity: UserDto) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun remove(entity: UserDto) {
-        TODO("Not yet implemented")
     }
 
 }

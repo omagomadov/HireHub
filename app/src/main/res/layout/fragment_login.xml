@@ -23,10 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:scrollIndicators="bottom">
+                android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/login_text"
@@ -42,6 +39,7 @@
                     android:id="@+id/input_layout_email"
                     android:layout_width="@dimen/input_width"
                     android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin">
 
                     <AutoCompleteTextView
@@ -61,6 +59,7 @@
                     android:id="@+id/input_layout_password"
                     android:layout_width="@dimen/input_width"
                     android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin"
                     app:layout_constraintTop_toBottomOf="@+id/input_layout_email"
                     app:passwordToggleEnabled="true">
@@ -81,6 +80,7 @@
                     android:id="@+id/password_forgot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin"
                     android:contextClickable="true"
                     android:text="@string/signup_password_forgot"
@@ -93,6 +93,7 @@
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="@dimen/button_width"
                     android:layout_height="@dimen/button_height"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/margin"
                     android:layout_marginBottom="252dp"
                     android:hint="@string/login_button_hint"
