@@ -1,12 +1,15 @@
 package g54516.hirehub.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import g54516.hirehub.R
+import g54516.hirehub.database.service.AuthService
 import g54516.hirehub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -43,14 +46,17 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.message -> {
-                    navController.navigate(R.id.messageFragment)
-                    true
-                }
-
                 R.id.setting -> {
                     navController.navigate(R.id.settingFragment)
                     Log.i("setting", "clicked")
+                    true
+                }
+
+                R.id.logout -> {
+                    Toast.makeText(this, R.string.logout_message, Toast.LENGTH_SHORT).show()
+                    AuthService.signOut()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    this.finish()
                     true
                 }
 
@@ -64,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         // (if not set -> app crash !!)
         binding.bottomNavigation.setOnItemReselectedListener { item ->
             when (item.itemId) {
-                R.id.home, R.id.search, R.id.message, R.id.setting -> true
+                R.id.home, R.id.search, R.id.logout, R.id.setting -> true
                 else -> false
             }
         }

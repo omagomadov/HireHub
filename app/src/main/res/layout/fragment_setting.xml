@@ -29,32 +29,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/logout_button"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginTop="32dp"
-                android:text="@string/logout_title"
-                app:cornerRadius="@dimen/corner_radius"
-                app:icon="@drawable/baseline_logout_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
-
-            <com.google.android.material.button.MaterialButton
                 android:id="@+id/about_button"
                 style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                 android:layout_width="@dimen/button_width"
                 android:layout_height="@dimen/button_height"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/margin"
                 android:text="@string/about_title"
                 app:cornerRadius="@dimen/corner_radius"
                 app:icon="@drawable/baseline_question_mark_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintHorizontal_bias="0.572"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logout_button" />
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/application_info"

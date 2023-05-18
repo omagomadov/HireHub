@@ -25,13 +25,6 @@ class SettingFragment : Fragment() {
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_setting, container, false)
 
-        binding.logoutButton.setOnClickListener {
-            AuthService.signOut()
-            Toast.makeText(context, R.string.logout_message, Toast.LENGTH_SHORT).show()
-            startActivity(Intent(activity, LoginActivity::class.java))
-            activity?.finish()
-        }
-
         binding.aboutButton.setOnClickListener {
             findNavController().navigate(R.id.action_settingFragment_to_aboutFragment)
         }
