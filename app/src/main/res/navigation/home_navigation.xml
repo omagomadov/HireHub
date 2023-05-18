@@ -12,7 +12,11 @@
         android:id="@+id/searchFragment"
         android:name="g54516.hirehub.ui.fragments.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_developerFragment"
+            app:destination="@id/developerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messageFragment"
         android:name="g54516.hirehub.ui.fragments.MessageFragment"
@@ -32,4 +36,14 @@
         android:name="g54516.hirehub.ui.fragments.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/developerFragment"
+        android:name="g54516.hirehub.ui.fragments.DeveloperFragment"
+        android:label="fragment_developer"
+        tools:layout="@layout/fragment_developer">
+        <argument
+            android:name="developer_email"
+            android:defaultValue='""'
+            app:argType="string" />
+    </fragment>
 </navigation>

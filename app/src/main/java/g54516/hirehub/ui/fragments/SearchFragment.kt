@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.database.repository.DeveloperRepository
 import g54516.hirehub.databinding.FragmentSearchBinding
@@ -32,8 +33,10 @@ class SearchFragment : Fragment() {
 
         val viewModelFactory = SearchViewModelFactory(database, application)
 
-        val adapter = DeveloperAdapter(DeveloperAdapter.DeveloperListener { _ ->
-            //todo
+        val adapter = DeveloperAdapter(DeveloperAdapter.DeveloperListener { email ->
+            val action = SearchFragmentDirections
+                .actionSearchFragmentToDeveloperFragment().setDeveloperEmail(email)
+            findNavController().navigate(action)
         })
 
         binding.searchCards.adapter = adapter

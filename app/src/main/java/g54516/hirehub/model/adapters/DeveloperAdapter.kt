@@ -8,7 +8,7 @@ import g54516.hirehub.model.viewholders.DeveloperViewHolder
 class DeveloperAdapter(private val clickListener: DeveloperListener) :
     RecyclerView.Adapter<DeveloperViewHolder>() {
 
-    class DeveloperListener(val clickListener: (id: String) -> Unit) {
+    class DeveloperListener(val clickListener: (developer: String) -> Unit) {
         fun onClick(developer: DeveloperDto) = clickListener(developer.email)
     }
 

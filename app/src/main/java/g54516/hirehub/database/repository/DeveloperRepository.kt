@@ -49,4 +49,18 @@ class DeveloperRepository {
         return developers
     }
 
+    suspend fun getDeveloperByEmail(id: String): DeveloperDto? {
+        var developer: DeveloperDto? = null
+        try {
+            developer = Firebase.firestore.collection("Developer")
+                .document(id)
+                .get()
+                .await()
+                .toObject(DeveloperDto::class.java)
+        } catch (e: java.lang.Exception) {
+            Log.d(TAG, "Erreur lors de la récupération du développeur ${e.toString()}")
+        }
+        return developer
+    }
+
 }
