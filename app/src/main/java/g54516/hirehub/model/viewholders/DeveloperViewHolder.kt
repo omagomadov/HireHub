@@ -2,7 +2,6 @@ package g54516.hirehub.model.viewholders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ExpandableListView.OnChildClickListener
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide

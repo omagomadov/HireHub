@@ -1,7 +1,6 @@
 package g54516.hirehub.model.adapters
 
 import android.view.ViewGroup
-import android.widget.ExpandableListView.OnChildClickListener
 import androidx.recyclerview.widget.RecyclerView
 import g54516.hirehub.database.dto.DeveloperDto
 import g54516.hirehub.model.viewholders.DeveloperViewHolder

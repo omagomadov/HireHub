@@ -1,14 +1,12 @@
 package g54516.hirehub.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.database.repository.DeveloperRepository
 import g54516.hirehub.databinding.FragmentSearchBinding

@@ -60,4 +60,9 @@
     <string name="search_hint">Rechercher un développeur</string>
     <string name="search_content_description">Rechercher un développeur sur HireHub</string>
     <string name="search_best_rating_text">Mieux noté</string>
+    <string name="appointement_button_hint">Prendre un rendez-vous</string>
+    <string name="contact_button_hint">Contacter le développeur</string>
+    <string name="back_button_content_description">Retourner en arrière</string>
+    <string name="rating_content_description">La note attribuée à ce développeur</string>
+    <string name="avatar_content_description">L\'image de profil du développeur</string>
 </resources>

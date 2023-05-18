@@ -8,4 +8,6 @@
     <dimen name="button_height">60dp</dimen>
     <dimen name="input_width">300dp</dimen>
     <dimen name="input_height">65dp</dimen>
+    <dimen name="minimum_width">48dp</dimen>
+    <dimen name="minimum_height">48dp</dimen>
 </resources>
