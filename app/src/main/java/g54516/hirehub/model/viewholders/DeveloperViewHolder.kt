@@ -2,6 +2,7 @@ package g54516.hirehub.model.viewholders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ExpandableListView.OnChildClickListener
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,6 +12,7 @@ import com.google.firebase.storage.FirebaseStorage
 import g54516.hirehub.R
 import g54516.hirehub.database.dto.DeveloperDto
 import g54516.hirehub.databinding.DeveloperCardBinding
+import g54516.hirehub.model.adapters.DeveloperAdapter
 
 class DeveloperViewHolder private constructor(private val binding: DeveloperCardBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -24,7 +26,7 @@ class DeveloperViewHolder private constructor(private val binding: DeveloperCard
         }
     }
 
-    fun bind(developer: DeveloperDto) {
+    fun bind(developer: DeveloperDto, clickListener: DeveloperAdapter.DeveloperListener) {
 
         val instance = FirebaseStorage.getInstance().reference
         val ref = instance.child(developer.avatar)
@@ -40,6 +42,7 @@ class DeveloperViewHolder private constructor(private val binding: DeveloperCard
         }
 
         binding.developer = developer
+        binding.clickListener = clickListener
         binding.hasPendingBindings()
     }
 

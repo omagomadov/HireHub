@@ -7,6 +7,9 @@
         <variable
             name="developer"
             type="g54516.hirehub.database.dto.DeveloperDto" />
+        <variable
+            name="clickListener"
+            type="g54516.hirehub.model.adapters.DeveloperAdapter.DeveloperListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:background="@drawable/card_rounded"
+        android:onClick="@{() -> clickListener.onClick(developer)}"
         android:padding="@dimen/padding">
 
         <ImageView
