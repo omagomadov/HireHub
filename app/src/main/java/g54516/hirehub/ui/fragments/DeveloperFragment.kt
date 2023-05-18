@@ -38,7 +38,9 @@ class DeveloperFragment : Fragment() {
         }
 
         binding.appointementButton.setOnClickListener {
-            //todo
+            val action = DeveloperFragmentDirections.actionDeveloperFragmentToAppointmentFragment()
+                .setDeveloperEmail(argument ?: "")
+            findNavController().navigate(action)
         }
 
         binding.contactButton.setOnClickListener {

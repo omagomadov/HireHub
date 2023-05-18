@@ -45,5 +45,21 @@
             android:name="developer_email"
             android:defaultValue='""'
             app:argType="string" />
+        <action
+            android:id="@+id/action_developerFragment_to_appointmentFragment"
+            app:destination="@id/appointmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentFragment"
+        android:name="g54516.hirehub.ui.fragments.AppointmentFragment"
+        android:label="fragment_appointment"
+        tools:layout="@layout/fragment_appointment">
+        <argument
+            android:name="developer_email"
+            android:defaultValue='""'
+            app:argType="string" />
+        <action
+            android:id="@+id/action_appointmentFragment_to_developerFragment"
+            app:destination="@id/developerFragment" />
     </fragment>
 </navigation>

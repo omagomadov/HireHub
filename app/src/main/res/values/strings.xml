@@ -65,4 +65,6 @@
     <string name="back_button_content_description">Retourner en arrière</string>
     <string name="rating_content_description">La note attribuée à ce développeur</string>
     <string name="avatar_content_description">L\'image de profil du développeur</string>
+    <string name="appointment_title">Rendez-vous</string>
+    <string name="appointment_button">Confirmer le rendez-vous</string>
 </resources>
