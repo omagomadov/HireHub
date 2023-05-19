@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView.OnQueryTextListener
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -37,6 +39,23 @@ class SearchFragment : Fragment() {
             val action = SearchFragmentDirections
                 .actionSearchFragmentToDeveloperFragment(developer)
             findNavController().navigate(action)
+        })
+
+        binding.searchView.setOnQueryTextListener(object : OnQueryTextListener,
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                binding.searchView.clearFocus()
+                adapter.filter.filter(p0)
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                if (p0.isNullOrEmpty()) {
+                    this.onQueryTextSubmit("")
+                }
+                return true
+            }
+
         })
 
         binding.searchCards.adapter = adapter

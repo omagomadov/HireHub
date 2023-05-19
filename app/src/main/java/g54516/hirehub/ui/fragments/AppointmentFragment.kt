@@ -26,7 +26,7 @@ class AppointmentFragment : Fragment() {
         }
 
         binding.backButton.setOnClickListener {
-            if(argument != null) {
+            if (argument != null) {
                 val action = AppointmentFragmentDirections
                     .actionAppointmentFragmentToDeveloperFragment(argument)
                 findNavController().navigate(action)

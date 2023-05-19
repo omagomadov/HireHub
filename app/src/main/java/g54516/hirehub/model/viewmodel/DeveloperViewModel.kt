@@ -4,10 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import g54516.hirehub.database.dto.DeveloperDto
 import g54516.hirehub.database.repository.DeveloperRepository
-import kotlinx.coroutines.launch
 
 class DeveloperViewModel(
     private val database: DeveloperRepository,
@@ -20,7 +18,7 @@ class DeveloperViewModel(
         get() = _currentDeveloper
 
     init {
-        if(developer != null) {
+        if (developer != null) {
             _currentDeveloper.value = developer
         }
     }
