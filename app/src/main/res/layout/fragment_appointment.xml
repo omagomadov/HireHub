@@ -5,6 +5,15 @@
     android:paddingTop="?attr/actionBarSize"
     tools:context=".ui.fragments.AppointmentFragment">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="g54516.hirehub.model.viewmodel.AppointmentViewModel" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,6 +23,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
             android:background="@drawable/card_rounded">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/error_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding"
+                android:text="@string/error_incorrect_date"
+                android:textAlignment="center"
+                android:textColor="@color/red_color"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:visibility="@{viewModel.userSelectedValidDate ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView2"
@@ -26,22 +50,25 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/back_button"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/error_message" />
 
             <CalendarView
                 android:id="@+id/calendarView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="334dp"
+                android:layout_height="301dp"
                 android:layout_margin="@dimen/margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/materialTextView3"
+                android:id="@+id/calendar_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
+                android:text="@{@string/appointement_text + ' ' + viewModel.developer.firstName + ' ' + viewModel.developer.lastName + ' ' + @string/appointement_text_extended  + ' ' + viewModel.appointmentDate}"
+                android:textAlignment="center"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,11 +80,12 @@
                 android:layout_height="@dimen/button_height"
                 android:layout_margin="@dimen/margin"
                 android:text="@string/appointment_button"
+                android:enabled="@{viewModel.userSelectedValidDate}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialTextView3"
+                app:layout_constraintTop_toBottomOf="@+id/calendar_date"
                 app:layout_constraintVertical_bias="1.0" />
 
             <ImageButton

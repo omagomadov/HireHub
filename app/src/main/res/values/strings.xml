@@ -67,4 +67,7 @@
     <string name="avatar_content_description">L\'image de profil du développeur</string>
     <string name="appointment_title">Rendez-vous</string>
     <string name="appointment_button">Confirmer le rendez-vous</string>
+    <string name="appointement_text">Vous êtes sur le point de prendre un rendez-vous avec</string>
+    <string name="appointement_text_extended">le</string>
+    <string name="error_incorrect_date">La date sélectionnée ne peut pas être ultérieure à aujourd\'hui.</string>
 </resources>

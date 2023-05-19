@@ -6,13 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
 import g54516.hirehub.databinding.FragmentAppointmentBinding
+import g54516.hirehub.model.factories.AppointmentViewModelFactory
+import g54516.hirehub.model.viewmodel.AppointmentViewModel
+import java.time.LocalDate
 
 class AppointmentFragment : Fragment() {
 
     lateinit var binding: FragmentAppointmentBinding
+    lateinit var viewModel: AppointmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,12 +30,26 @@ class AppointmentFragment : Fragment() {
             DeveloperFragmentArgs.fromBundle(it).developer
         }
 
+        val application = requireNotNull(this.activity).application
+
+        val viewModelFactory = AppointmentViewModelFactory(argument, application)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)[AppointmentViewModel::class.java]
+
+        binding.viewModel = viewModel
+
+        binding.lifecycleOwner = this
+
         binding.backButton.setOnClickListener {
             if (argument != null) {
                 val action = AppointmentFragmentDirections
                     .actionAppointmentFragmentToDeveloperFragment(argument)
                 findNavController().navigate(action)
             }
+        }
+
+        binding.calendarView.setOnDateChangeListener { _, i, i2, i3 ->
+            viewModel.updateDate(LocalDate.of(i, i2 + 1, i3))
         }
 
         return binding.root
