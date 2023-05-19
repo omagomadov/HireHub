@@ -34,13 +34,15 @@ class DeveloperFragment : Fragment() {
             .inflate(inflater, R.layout.fragment_developer, container, false)
 
         var argument = arguments?.let {
-            DeveloperFragmentArgs.fromBundle(it).developerEmail
+            DeveloperFragmentArgs.fromBundle(it).developer
         }
 
         binding.appointementButton.setOnClickListener {
-            val action = DeveloperFragmentDirections.actionDeveloperFragmentToAppointmentFragment()
-                .setDeveloperEmail(argument ?: "")
-            findNavController().navigate(action)
+            if(argument != null) {
+                val action = DeveloperFragmentDirections
+                    .actionDeveloperFragmentToAppointmentFragment(argument)
+                findNavController().navigate(action)
+            }
         }
 
         binding.contactButton.setOnClickListener {
@@ -66,7 +68,7 @@ class DeveloperFragment : Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory)[DeveloperViewModel::class.java]
 
-        viewModel.developer.observe(viewLifecycleOwner) { developer ->
+        viewModel.currentDeveloper.observe(viewLifecycleOwner) { developer ->
             if (developer != null) {
                 binding.developer = developer
                 val instance = FirebaseStorage.getInstance().reference

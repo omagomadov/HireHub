@@ -11,19 +11,17 @@ import kotlinx.coroutines.launch
 
 class DeveloperViewModel(
     private val database: DeveloperRepository,
-    private val id: String?,
+    developer: DeveloperDto?,
     application: Application
 ) : AndroidViewModel(application) {
 
-    private var _developer = MutableLiveData<DeveloperDto>()
-    val developer: LiveData<DeveloperDto>
-        get() = _developer
+    private var _currentDeveloper = MutableLiveData<DeveloperDto?>()
+    val currentDeveloper: LiveData<DeveloperDto?>
+        get() = _currentDeveloper
 
     init {
-        viewModelScope.launch {
-            if (id != null) {
-                _developer.value = database.getDeveloperByEmail(id)
-            }
+        if(developer != null) {
+            _currentDeveloper.value = developer
         }
     }
 

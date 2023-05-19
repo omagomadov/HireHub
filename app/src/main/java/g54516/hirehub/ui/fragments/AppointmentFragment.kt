@@ -22,13 +22,15 @@ class AppointmentFragment : Fragment() {
             .inflate(inflater, R.layout.fragment_appointment, container, false)
 
         var argument = arguments?.let {
-            DeveloperFragmentArgs.fromBundle(it).developerEmail
+            DeveloperFragmentArgs.fromBundle(it).developer
         }
 
         binding.backButton.setOnClickListener {
-            val action = AppointmentFragmentDirections
-                .actionAppointmentFragmentToDeveloperFragment().setDeveloperEmail(argument ?: "")
-            findNavController().navigate(action)
+            if(argument != null) {
+                val action = AppointmentFragmentDirections
+                    .actionAppointmentFragmentToDeveloperFragment(argument)
+                findNavController().navigate(action)
+            }
         }
 
         return binding.root

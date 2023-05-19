@@ -33,9 +33,9 @@ class SearchFragment : Fragment() {
 
         val viewModelFactory = SearchViewModelFactory(database, application)
 
-        val adapter = DeveloperAdapter(DeveloperAdapter.DeveloperListener { email ->
+        val adapter = DeveloperAdapter(DeveloperAdapter.DeveloperListener { developer ->
             val action = SearchFragmentDirections
-                .actionSearchFragmentToDeveloperFragment().setDeveloperEmail(email)
+                .actionSearchFragmentToDeveloperFragment(developer)
             findNavController().navigate(action)
         })
 

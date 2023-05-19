@@ -8,8 +8,8 @@ import g54516.hirehub.model.viewholders.DeveloperViewHolder
 class DeveloperAdapter(private val clickListener: DeveloperListener) :
     RecyclerView.Adapter<DeveloperViewHolder>() {
 
-    class DeveloperListener(val clickListener: (developer: String) -> Unit) {
-        fun onClick(developer: DeveloperDto) = clickListener(developer.email)
+    class DeveloperListener(val clickListener: (developer: DeveloperDto) -> Unit) {
+        fun onClick(developer: DeveloperDto) = clickListener(developer)
     }
 
     var developers = listOf<DeveloperDto>()
