@@ -39,8 +39,6 @@ class AppointmentViewHolder private constructor(private val binding: Appointment
             Glide
                 .with(binding.root.context)
                 .load(uri.toString())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .onlyRetrieveFromCache(true)
                 .apply(RequestOptions.circleCropTransform())
                 .into(binding.avatarDeveloper)
         }

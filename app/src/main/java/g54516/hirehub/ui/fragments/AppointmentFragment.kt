@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -59,6 +60,10 @@ class AppointmentFragment : Fragment() {
                     argument,
                     viewModel.appointmentDate.value
                 )
+                Toast
+                    .makeText(context, "Votre rendez-vous est enregistrer", Toast.LENGTH_SHORT)
+                    .show()
+                findNavController().navigate(R.id.homeFragment)
             }
         }
 
