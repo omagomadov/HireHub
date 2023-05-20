@@ -15,7 +15,6 @@ import g54516.hirehub.databinding.FragmentAppointmentBinding
 import g54516.hirehub.model.factories.AppointmentViewModelFactory
 import g54516.hirehub.model.viewmodel.AppointmentViewModel
 import java.time.LocalDate
-import java.util.Date
 
 class AppointmentFragment : Fragment() {
 
@@ -55,7 +54,11 @@ class AppointmentFragment : Fragment() {
 
         binding.appointementButton.setOnClickListener {
             if (argument != null) {
-                viewModel.addAppointment(AuthService.getCurrentUser(), argument.email, Date())
+                viewModel.addAppointment(
+                    AuthService.getCurrentUser(),
+                    argument,
+                    viewModel.appointmentDate.value
+                )
             }
         }
 

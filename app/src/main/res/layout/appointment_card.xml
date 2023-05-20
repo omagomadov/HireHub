@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="appointment"
+            type="g54516.hirehub.database.dto.AppointmentDto" />
+
+        <variable
+            name="clickListener"
+            type="g54516.hirehub.model.adapters.AppointmentAdapter.AppointmentListener" />
+
+        <variable
+            name="date"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:background="@drawable/card_rounded"
+        android:onClick="@{() -> clickListener.onClick(appointment)}"
+        android:padding="@dimen/padding">
+
+        <ImageView
+            android:id="@+id/avatar_developer"
+            android:layout_width="91dp"
+            android:layout_height="89dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.466" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/name_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@{appointment.developer_full_name}"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/avatar_developer"
+            app:layout_constraintTop_toTopOf="@+id/avatar_developer" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/date_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{date}"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_developer"
+            app:layout_constraintStart_toEndOf="@+id/avatar_developer"
+            app:layout_constraintTop_toBottomOf="@+id/name_developer"
+            app:layout_constraintVertical_bias="0.478" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
