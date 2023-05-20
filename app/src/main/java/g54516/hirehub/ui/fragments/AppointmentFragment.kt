@@ -54,7 +54,7 @@ class AppointmentFragment : Fragment() {
         }
 
         binding.appointementButton.setOnClickListener {
-            if(argument != null) {
+            if (argument != null) {
                 viewModel.addAppointment(AuthService.getCurrentUser(), argument.email, Date())
             }
         }
