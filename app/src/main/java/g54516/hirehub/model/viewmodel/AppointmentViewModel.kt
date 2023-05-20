@@ -4,12 +4,17 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import g54516.hirehub.database.dto.DeveloperDto
+import g54516.hirehub.database.repository.AppointmentRepository
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.Date
 import java.util.Locale
 
 class AppointmentViewModel(
+    private val database: AppointmentRepository,
     val developer: DeveloperDto?,
     application: Application
 ) : AndroidViewModel(application) {
@@ -26,6 +31,12 @@ class AppointmentViewModel(
         _appointmentDate.value = LocalDate.now()
             .format(DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.FRENCH))
         _userSelectedValidDate.value = true
+    }
+
+    fun addAppointment(user_email: String, developer_email: String, date: Date) {
+        if(userSelectedValidDate.value == true) {
+            database.addAppointment(user_email, developer_email, date)
+        }
     }
 
     fun updateDate(date: LocalDate) {

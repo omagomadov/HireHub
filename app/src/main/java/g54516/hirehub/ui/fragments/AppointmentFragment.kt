@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import g54516.hirehub.R
+import g54516.hirehub.database.repository.AppointmentRepository
+import g54516.hirehub.database.service.AuthService
 import g54516.hirehub.databinding.FragmentAppointmentBinding
 import g54516.hirehub.model.factories.AppointmentViewModelFactory
 import g54516.hirehub.model.viewmodel.AppointmentViewModel
 import java.time.LocalDate
+import java.util.Date
 
 class AppointmentFragment : Fragment() {
 
@@ -32,7 +35,9 @@ class AppointmentFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
 
-        val viewModelFactory = AppointmentViewModelFactory(argument, application)
+        val database = AppointmentRepository()
+
+        val viewModelFactory = AppointmentViewModelFactory(database, argument, application)
 
         viewModel = ViewModelProvider(this, viewModelFactory)[AppointmentViewModel::class.java]
 
@@ -45,6 +50,12 @@ class AppointmentFragment : Fragment() {
                 val action = AppointmentFragmentDirections
                     .actionAppointmentFragmentToDeveloperFragment(argument)
                 findNavController().navigate(action)
+            }
+        }
+
+        binding.appointementButton.setOnClickListener {
+            if(argument != null) {
+                viewModel.addAppointment(AuthService.getCurrentUser(), argument.email, Date())
             }
         }
 
