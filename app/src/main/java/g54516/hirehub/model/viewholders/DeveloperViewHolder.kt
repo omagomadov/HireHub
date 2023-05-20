@@ -34,7 +34,7 @@ class DeveloperViewHolder private constructor(private val binding: DeveloperCard
             Glide
                 .with(binding.root.context)
                 .load(uri.toString())
-                .load(uri.toString())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .apply(RequestOptions.circleCropTransform())
                 .into(binding.avatarDeveloper)
         }

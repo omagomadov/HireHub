@@ -6,9 +6,7 @@ import g54516.hirehub.database.dto.AppointmentDto
 import g54516.hirehub.database.dto.DeveloperDto
 import kotlinx.coroutines.tasks.await
 import java.time.LocalDate
-import java.time.ZoneId
 import java.time.ZoneOffset
-import java.util.Date
 
 class AppointmentRepository {
 

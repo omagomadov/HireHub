@@ -33,12 +33,14 @@ class AppointmentViewHolder private constructor(private val binding: Appointment
 
         val instance = FirebaseStorage.getInstance().reference
         val ref = instance.child(appointment.developer_avatar)
-        val date = SimpleDateFormat("dd MM yyyy", Locale.FRENCH).format(Date(appointment.date))
+        val date = SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH)
+            .format(Date(appointment.date))
 
         ref.downloadUrl.addOnSuccessListener { uri ->
             Glide
                 .with(binding.root.context)
                 .load(uri.toString())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .apply(RequestOptions.circleCropTransform())
                 .into(binding.avatarDeveloper)
         }
