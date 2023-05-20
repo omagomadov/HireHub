@@ -23,14 +23,43 @@ class AppointmentRepository {
             )
     }
 
-    suspend fun getAppointments(user_email: String?): List<AppointmentDto> {
+    suspend fun getPassedAppointments(user_email: String?): List<AppointmentDto> {
         var appointments = mutableListOf<AppointmentDto>()
         Firebase.firestore
             .collection("Appointment")
-            .get().addOnCompleteListener { snapshot ->
+            .whereEqualTo("user_email", user_email)
+            .whereLessThan(
+                "date", LocalDate.now().atStartOfDay()
+                    .toInstant(ZoneOffset.UTC).toEpochMilli()
+            )
+            .get()
+            .addOnCompleteListener { snapshot ->
                 if (snapshot.isSuccessful) {
                     for (document in snapshot.result.documents) {
-                        val appointment = document.toObject(AppointmentDto::class.java)
+                        var appointment = document.toObject(AppointmentDto::class.java)
+                        if (appointment != null) {
+                            appointments.add(appointment)
+                        }
+                    }
+                }
+            }.await()
+        return appointments
+    }
+
+    suspend fun getIncomeAppointments(user_email: String?): List<AppointmentDto> {
+        var appointments = mutableListOf<AppointmentDto>()
+        Firebase.firestore
+            .collection("Appointment")
+            .whereEqualTo("user_email", user_email)
+            .whereGreaterThan(
+                "date", LocalDate.now().atStartOfDay()
+                    .toInstant(ZoneOffset.UTC).toEpochMilli()
+            )
+            .get()
+            .addOnCompleteListener { snapshot ->
+                if (snapshot.isSuccessful) {
+                    for (document in snapshot.result.documents) {
+                        var appointment = document.toObject(AppointmentDto::class.java)
                         if (appointment != null) {
                             appointments.add(appointment)
                         }
