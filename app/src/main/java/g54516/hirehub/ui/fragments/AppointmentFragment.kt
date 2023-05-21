@@ -70,7 +70,7 @@ class AppointmentFragment : Fragment() {
                 Toast
                     .makeText(context, "Votre rendez-vous est enregistrer", Toast.LENGTH_SHORT)
                     .show()
-                findNavController().navigate(R.id.homeFragment)
+                findNavController().navigate(R.id.searchFragment)
             }
         }
 
