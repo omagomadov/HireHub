@@ -13,6 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
             android:background="@drawable/card_rounded"
+            android:elevation="2dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,10 +22,10 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_margin="@dimen/margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
                 android:src="@drawable/hirehub_logo"
                 tools:layout_editor_absoluteX="124dp"
                 tools:layout_editor_absoluteY="46dp" />

@@ -13,6 +13,7 @@ import g54516.hirehub.R
 import g54516.hirehub.database.repository.AppointmentRepository
 import g54516.hirehub.database.service.AuthService
 import g54516.hirehub.databinding.FragmentAppointmentBinding
+import g54516.hirehub.model.adapters.TimeSlotAdapter
 import g54516.hirehub.model.factories.AppointmentViewModelFactory
 import g54516.hirehub.model.viewmodel.AppointmentViewModel
 import java.time.LocalDate
@@ -45,6 +46,12 @@ class AppointmentFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
+        val adapter = TimeSlotAdapter(TimeSlotAdapter.TimeSlotListener {
+            viewModel.updateHour(it)
+        })
+
+        binding.timeSlot.adapter = adapter
+
         binding.backButton.setOnClickListener {
             if (argument != null) {
                 val action = AppointmentFragmentDirections
@@ -69,6 +76,10 @@ class AppointmentFragment : Fragment() {
 
         binding.calendarView.setOnDateChangeListener { _, i, i2, i3 ->
             viewModel.updateDate(LocalDate.of(i, i2 + 1, i3))
+        }
+
+        viewModel.timeSlots.observe(viewLifecycleOwner) {
+            adapter.hours = it
         }
 
         return binding.root

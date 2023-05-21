@@ -33,7 +33,7 @@ class AppointmentViewHolder private constructor(private val binding: Appointment
 
         val instance = FirebaseStorage.getInstance().reference
         val ref = instance.child(appointment.developer_avatar)
-        val date = SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH)
+        val date = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.FRENCH)
             .format(Date(appointment.date))
 
         ref.downloadUrl.addOnSuccessListener { uri ->

@@ -70,4 +70,5 @@
     <string name="appointement_text">Vous êtes sur le point de prendre un rendez-vous avec</string>
     <string name="appointement_text_extended">le</string>
     <string name="error_incorrect_date">La date sélectionnée ne peut pas être ultérieure à aujourd\'hui.</string>
+    <string name="time_slot_minutes">:00</string>
 </resources>

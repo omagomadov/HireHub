@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="g54516.hirehub.model.adapters.TimeSlotAdapter.TimeSlotListener" />
+
+        <variable
+            name="hours"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/time_slot_card"
+        android:layout_width="@dimen/time_slot_width"
+        android:layout_height="@dimen/time_slot_height"
+        android:layout_margin="@dimen/margin"
+        android:background="@drawable/time_slot_rounded"
+        android:elevation="2dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/time_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{hours.toString()}"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/time_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_slot_minutes"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</layout>

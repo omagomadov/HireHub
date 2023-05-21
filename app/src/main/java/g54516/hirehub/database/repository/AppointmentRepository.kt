@@ -8,11 +8,14 @@ import g54516.hirehub.database.dto.AppointmentDto
 import g54516.hirehub.database.dto.DeveloperDto
 import kotlinx.coroutines.tasks.await
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.ZoneOffset
+import java.time.ZonedDateTime
 
 class AppointmentRepository {
 
-    fun addAppointment(user_email: String, developer: DeveloperDto, date: LocalDate) {
+    fun addAppointment(user_email: String, developer: DeveloperDto, date: LocalDateTime) {
         try {
             Firebase.firestore.collection("Appointment")
                 .add(
@@ -21,7 +24,10 @@ class AppointmentRepository {
                         "developer_email" to developer.email,
                         "developer_full_name" to developer.firstName + " " + developer.lastName,
                         "developer_avatar" to developer.avatar,
-                        "date" to date.atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli()
+                        "date" to ZonedDateTime
+                            .of(date, ZoneId.systemDefault()).toInstant().toEpochMilli()
+                        // Convert the given date and time to a timestamp in milliseconds
+                        // using the system default time zone
                     )
                 )
         } catch (e: Exception) {
