@@ -39,6 +39,17 @@
                 app:queryBackground="@color/grey_color" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/filter_cards"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="@dimen/margin"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/search_cards"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,7 +58,7 @@
                 app:layout_constraintBottom_toTopOf="@id/best_rating_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchView" />
+                app:layout_constraintTop_toBottomOf="@+id/filter_cards" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/best_rating_text"
