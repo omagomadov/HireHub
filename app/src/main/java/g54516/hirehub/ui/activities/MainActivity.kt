@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupVisibilityOfMenu() {
-        if(intent.getBooleanExtra("isDeveloper", false)) {
+        if (intent.getBooleanExtra("isDeveloper", false)) {
             binding.bottomNavigation.menu.findItem(R.id.search).isVisible = false
             binding.bottomNavigation.menu.findItem(R.id.pending).isVisible = true
         } else {

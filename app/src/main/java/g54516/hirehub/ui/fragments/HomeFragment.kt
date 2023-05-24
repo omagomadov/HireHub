@@ -28,13 +28,18 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_home, container, false)
 
+        // Retrieve 'isDeveloper' bundle from the MainActivity
+        // MainActivity know if it is a user or developer
+        // He received the information from LoginActivity
+        val bundle = requireActivity().intent.extras?.getBoolean("isDeveloper")
+
         val application = requireNotNull(this.activity).application
 
         val room = HireHubDB.getInstance(application).userDao
 
         val database = AppointmentRepository()
 
-        val viewModelFactory = HomeViewModelFactory(database, room, application)
+        val viewModelFactory = HomeViewModelFactory(database, room, bundle, application)
 
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
 

@@ -96,13 +96,17 @@ class RegisterFragment : Fragment() {
 
         viewModel.isRegistered.observe(viewLifecycleOwner) {
             if (it) {
-                if(viewModel.isDeveloper.value == true) {
-                    startActivity(Intent(activity, MainActivity::class.java)
-                        .putExtra("isDeveloper", true))
+                if (viewModel.isDeveloper.value == true) {
+                    startActivity(
+                        Intent(activity, MainActivity::class.java)
+                            .putExtra("isDeveloper", true)
+                    )
                     activity?.finish()
                 } else {
-                    startActivity(Intent(activity, MainActivity::class.java)
-                        .putExtra("isDeveloper", false))
+                    startActivity(
+                        Intent(activity, MainActivity::class.java)
+                            .putExtra("isDeveloper", false)
+                    )
                     activity?.finish()
                 }
             }

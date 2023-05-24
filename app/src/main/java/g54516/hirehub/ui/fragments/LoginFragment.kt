@@ -88,13 +88,17 @@ class LoginFragment : Fragment() {
 
         viewModel.isConnected.observe(viewLifecycleOwner, Observer { isConnected ->
             if (isConnected) {
-                if(viewModel.isDeveloper.value == true) {
-                    startActivity(Intent(activity, MainActivity::class.java)
-                        .putExtra("isDeveloper", true))
+                if (viewModel.isDeveloper.value == true) {
+                    startActivity(
+                        Intent(activity, MainActivity::class.java)
+                            .putExtra("isDeveloper", true)
+                    )
                     activity?.finish()
                 } else {
-                    startActivity(Intent(activity, MainActivity::class.java)
-                        .putExtra("isDeveloper", false))
+                    startActivity(
+                        Intent(activity, MainActivity::class.java)
+                            .putExtra("isDeveloper", false)
+                    )
                     activity?.finish()
                 }
             }

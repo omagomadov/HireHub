@@ -37,7 +37,7 @@ class AppointmentRepository {
         }
     }
 
-    suspend fun getPassedAppointments(user_email: String?): List<AppointmentDto> {
+    suspend fun getUserPassedAppointments(user_email: String?): List<AppointmentDto> {
         var appointments = mutableListOf<AppointmentDto>()
         try {
             Firebase.firestore
@@ -67,7 +67,7 @@ class AppointmentRepository {
         return appointments
     }
 
-    suspend fun getIncomeAppointments(user_email: String?): List<AppointmentDto> {
+    suspend fun getUserIncomeAppointments(user_email: String?): List<AppointmentDto> {
         var appointments = mutableListOf<AppointmentDto>()
         try {
             Firebase.firestore
@@ -92,6 +92,70 @@ class AppointmentRepository {
             Log.d(
                 ContentValues.TAG,
                 "Erreur lors de la récupération des rendez-vous passés : ${e.toString()}"
+            )
+        }
+        return appointments
+    }
+
+    suspend fun getDeveloperIncomeAppointments(developer_email: String?): List<AppointmentDto> {
+        Log.d(
+            "getDeveloper", LocalDateTime.now()
+                .toInstant(ZoneOffset.UTC).toEpochMilli().toString()
+        )
+        var appointments = mutableListOf<AppointmentDto>()
+        try {
+            Firebase.firestore
+                .collection("Appointment")
+                .whereEqualTo("developer_email", developer_email)
+                .whereGreaterThan(
+                    "date", LocalDateTime.now()
+                        .toInstant(ZoneOffset.UTC).toEpochMilli()
+                )
+                .get()
+                .addOnCompleteListener { snapshot ->
+                    if (snapshot.isSuccessful) {
+                        for (document in snapshot.result.documents) {
+                            var appointment = document.toObject(AppointmentDto::class.java)
+                            if (appointment != null) {
+                                appointments.add(appointment)
+                            }
+                        }
+                    }
+                }.await()
+        } catch (e: Exception) {
+            Log.d(
+                ContentValues.TAG,
+                "Erreur lors de la récupération des rendez-vous passés : ${e.toString()}"
+            )
+        }
+        return appointments
+    }
+
+    suspend fun getDeveloperPassedAppointments(developer_email: String?): List<AppointmentDto> {
+        var appointments = mutableListOf<AppointmentDto>()
+        try {
+            Firebase.firestore
+                .collection("Appointment")
+                .whereEqualTo("developer_email", developer_email)
+                .whereLessThan(
+                    "date", LocalDateTime.now()
+                        .toInstant(ZoneOffset.UTC).toEpochMilli()
+                )
+                .get()
+                .addOnCompleteListener { snapshot ->
+                    if (snapshot.isSuccessful) {
+                        for (document in snapshot.result.documents) {
+                            var appointment = document.toObject(AppointmentDto::class.java)
+                            if (appointment != null) {
+                                appointments.add(appointment)
+                            }
+                        }
+                    }
+                }.await()
+        } catch (e: Exception) {
+            Log.d(
+                ContentValues.TAG,
+                "Erreur lors de la récupération des rendez-vous à venir:  ${e.toString()}"
             )
         }
         return appointments

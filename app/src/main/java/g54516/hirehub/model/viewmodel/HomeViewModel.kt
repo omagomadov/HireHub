@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     val database: AppointmentRepository,
     private var room: UserDao,
+    private var isDeveloper: Boolean?,
     application: Application
 ) : AndroidViewModel(application) {
 
@@ -33,8 +34,15 @@ class HomeViewModel(
     init {
         viewModelScope.launch {
             _user.value = room.getUserByEmail(AuthService.getCurrentUser())
-            _incomeAppointments.value = database.getIncomeAppointments(_user.value?.email)
-            _passedAppointments.value = database.getPassedAppointments(_user.value?.email)
+            if (isDeveloper == false) {
+                _incomeAppointments.value = database.getUserIncomeAppointments(_user.value?.email)
+                _passedAppointments.value = database.getUserPassedAppointments(_user.value?.email)
+            } else {
+                _incomeAppointments.value =
+                    database.getDeveloperIncomeAppointments(_user.value?.email)
+                _passedAppointments.value =
+                    database.getDeveloperPassedAppointments(_user.value?.email)
+            }
         }
     }
 
