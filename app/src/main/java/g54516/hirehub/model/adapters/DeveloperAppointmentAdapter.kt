@@ -3,9 +3,9 @@ package g54516.hirehub.model.adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import g54516.hirehub.database.dto.AppointmentDto
-import g54516.hirehub.model.viewholders.UserAppointmentViewHolder
+import g54516.hirehub.model.viewholders.DeveloperAppointmentViewHolder
 
-class UserAppointmentAdapter : RecyclerView.Adapter<UserAppointmentViewHolder>() {
+class DeveloperAppointmentAdapter : RecyclerView.Adapter<DeveloperAppointmentViewHolder>() {
 
     var appointments = listOf<AppointmentDto>()
         set(value) {
@@ -13,11 +13,14 @@ class UserAppointmentAdapter : RecyclerView.Adapter<UserAppointmentViewHolder>()
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAppointmentViewHolder {
-        return UserAppointmentViewHolder.from(parent)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): DeveloperAppointmentViewHolder {
+        return DeveloperAppointmentViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: UserAppointmentViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DeveloperAppointmentViewHolder, position: Int) {
         holder.bind(appointments[position])
     }
 
