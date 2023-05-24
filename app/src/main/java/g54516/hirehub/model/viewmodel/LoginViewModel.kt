@@ -9,6 +9,7 @@ import g54516.hirehub.R
 import g54516.hirehub.database.dao.UserDao
 import g54516.hirehub.database.dto.UserDto
 import g54516.hirehub.database.entity.User
+import g54516.hirehub.database.repository.DeveloperRepository
 import g54516.hirehub.database.repository.UserRepository
 import g54516.hirehub.database.service.AuthService
 import g54516.hirehub.model.Utils.isEmailValid
@@ -22,7 +23,9 @@ class LoginViewModel(
 
     private val application = application
 
-    private val _repository = UserRepository()
+    private val _userRepository = UserRepository()
+
+    private val _developerRepository = DeveloperRepository()
 
     private var _displayToast = MutableLiveData<Boolean>()
     val displayToast: LiveData<Boolean>
@@ -36,16 +39,11 @@ class LoginViewModel(
     val isConnected: LiveData<Boolean>
         get() = _isConnected
 
-    private var _isUpdated = MutableLiveData<Boolean>()
-    val isUpdated: LiveData<Boolean>
-        get() = _isUpdated
-
     var emails: LiveData<List<String>> = database.getAllEmails()
 
     init {
         _displayToast.value = false
         _isConnected.value = false
-        _isUpdated.value = false
     }
 
     fun signIn(email: String, password: String, date: Date) {
@@ -92,7 +90,7 @@ class LoginViewModel(
 
     private fun updateLocalDatabase(email: String, date: Date) {
         viewModelScope.launch {
-            var user = _repository.getUserByEmail(email)
+            val user = _userRepository.getUserByEmail(email)
             if (user != null) {
                 if (database.getUserByEmail(email) == null) {
                     insert(user, date)
@@ -101,6 +99,24 @@ class LoginViewModel(
                     if (oldUser?.date != null) {
                         if (oldUser.date.before(date)) {
                             update(oldUser.userId, user, date)
+                        }
+                    }
+                }
+                _isConnected.value = true
+            } else {
+                val developer = _developerRepository.getDeveloperByEmail(email)
+                if(developer != null) {
+                    val user = UserDto(developer.email,
+                        developer.firstName, developer.lastName,
+                        developer.gender, developer.phoneNumber)
+                    if(database.getUserByEmail(email) == null) {
+                        insert(user, date)
+                    } else {
+                        val oldUser = database.getUserByEmail(email)
+                        if (oldUser?.date != null) {
+                            if (oldUser.date.before(date)) {
+                                update(oldUser.userId, user, date)
+                            }
                         }
                     }
                 }
