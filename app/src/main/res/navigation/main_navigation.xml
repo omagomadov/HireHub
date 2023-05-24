@@ -18,11 +18,6 @@
             app:destination="@id/developerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/messageFragment"
-        android:name="g54516.hirehub.ui.fragments.MessageFragment"
-        android:label="fragment_message"
-        tools:layout="@layout/fragment_message" />
-    <fragment
         android:id="@+id/settingFragment"
         android:name="g54516.hirehub.ui.fragments.SettingFragment"
         android:label="fragment_setting"
