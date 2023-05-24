@@ -55,4 +55,9 @@
             android:name="developer"
             app:argType="g54516.hirehub.database.dto.DeveloperDto" />
     </fragment>
+    <fragment
+        android:id="@+id/pendingFragment"
+        android:name="g54516.hirehub.ui.fragments.PendingFragment"
+        android:label="fragment_pending"
+        tools:layout="@layout/fragment_pending" />
 </navigation>

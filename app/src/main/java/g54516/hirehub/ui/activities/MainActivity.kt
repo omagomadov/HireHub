@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.pending -> {
-                    //todo
+                    navController.navigate(R.id.pendingFragment)
                     true
                 }
 

@@ -46,6 +46,7 @@
     <string name="profil_title">Profile</string>
     <string name="meeting_title">Rendez-vous</string>
     <string name="setting_title">Paramètres</string>
+    <string name="pending_title">Les rendez-vous en attente d\'approbation</string>
     <string name="search_title">Recherche</string>
     <string name="message_title">Messagerie</string>
     <string name="logout_title">Déconnexion</string>
