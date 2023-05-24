@@ -11,6 +11,7 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class AppointmentRepository {
 
@@ -44,8 +45,7 @@ class AppointmentRepository {
                 .collection("Appointment")
                 .whereEqualTo("user_email", user_email)
                 .whereLessThan(
-                    "date", LocalDateTime.now()
-                        .toInstant(ZoneOffset.UTC).toEpochMilli()
+                    "date", System.currentTimeMillis()
                 )
                 .get()
                 .addOnCompleteListener { snapshot ->
@@ -74,8 +74,7 @@ class AppointmentRepository {
                 .collection("Appointment")
                 .whereEqualTo("user_email", user_email)
                 .whereGreaterThan(
-                    "date", LocalDateTime.now()
-                        .toInstant(ZoneOffset.UTC).toEpochMilli()
+                    "date", System.currentTimeMillis()
                 )
                 .get()
                 .addOnCompleteListener { snapshot ->
@@ -108,8 +107,7 @@ class AppointmentRepository {
                 .collection("Appointment")
                 .whereEqualTo("developer_email", developer_email)
                 .whereGreaterThan(
-                    "date", LocalDateTime.now()
-                        .toInstant(ZoneOffset.UTC).toEpochMilli()
+                    "date", System.currentTimeMillis()
                 )
                 .get()
                 .addOnCompleteListener { snapshot ->
@@ -138,8 +136,7 @@ class AppointmentRepository {
                 .collection("Appointment")
                 .whereEqualTo("developer_email", developer_email)
                 .whereLessThan(
-                    "date", LocalDateTime.now()
-                        .toInstant(ZoneOffset.UTC).toEpochMilli()
+                    "date", System.currentTimeMillis()
                 )
                 .get()
                 .addOnCompleteListener { snapshot ->
