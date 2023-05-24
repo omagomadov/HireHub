@@ -12,4 +12,6 @@
     <dimen name="input_height">65dp</dimen>
     <dimen name="minimum_width">48dp</dimen>
     <dimen name="minimum_height">48dp</dimen>
+    <dimen name="accept_button_width">65dp</dimen>
+    <dimen name="refuse_button_width">48dp</dimen>
 </resources>

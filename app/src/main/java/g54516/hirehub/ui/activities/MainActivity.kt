@@ -2,8 +2,6 @@ package g54516.hirehub.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -48,9 +46,13 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.pending -> {
+                    //todo
+                    true
+                }
+
                 R.id.setting -> {
                     navController.navigate(R.id.settingFragment)
-                    Log.i("setting", "clicked")
                     true
                 }
 
