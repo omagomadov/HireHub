@@ -105,11 +105,13 @@ class LoginViewModel(
                 _isConnected.value = true
             } else {
                 val developer = _developerRepository.getDeveloperByEmail(email)
-                if(developer != null) {
-                    val user = UserDto(developer.email,
+                if (developer != null) {
+                    val user = UserDto(
+                        developer.email,
                         developer.firstName, developer.lastName,
-                        developer.gender, developer.phoneNumber)
-                    if(database.getUserByEmail(email) == null) {
+                        developer.gender, developer.phoneNumber
+                    )
+                    if (database.getUserByEmail(email) == null) {
                         insert(user, date)
                     } else {
                         val oldUser = database.getUserByEmail(email)
