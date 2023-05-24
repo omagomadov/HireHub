@@ -21,6 +21,7 @@
     <string name="signup_create_new_question">Pas encore de compte?</string>
     <string name="signup_create_account">Créer un compte</string>
     <string name="signup_gender_unsuccessful">Veuillez choisir un genre</string>
+    <string name="signup_role_unsuccessful">Veuillez choisir un rôle</string>
     <string name="signup_password_not_same">Les mots de passes sont pas identiques</string>
     <string name="signup_phone_number">Le numéro de téléphone renseigné n\est pas belge</string>
     <string name="signin_successful_notification">Vous êtes connecté</string>
@@ -39,7 +40,9 @@
     <string name="phone_hint">Numéro de téléphone</string>
     <string name="radio_button_male">Homme</string>
     <string name="radio_button_female">Femme</string>
-    <string name="register_gender">Genre</string>
+    <string name="radio_button_user">Utilisateur</string>
+    <string name="radio_button_developer">Développeur</string>
+    <string name="register_gender">Veuillez choisir votre genre</string>
     <string name="profil_title">Profile</string>
     <string name="meeting_title">Rendez-vous</string>
     <string name="setting_title">Paramètres</string>

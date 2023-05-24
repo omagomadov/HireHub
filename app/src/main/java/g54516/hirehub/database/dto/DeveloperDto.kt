@@ -9,6 +9,8 @@ data class DeveloperDto(
     val lastName: String = "",
     val domain: String = "",
     val experience_level: String = "",
+    val gender: String = "",
+    val phoneNumber: Int = 0,
     val rating: Int = 0,
     val avatar: String = ""
 ) : Parcelable {
@@ -18,8 +20,8 @@ data class DeveloperDto(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readInt() ?: 0,
-        parcel.readString() ?: ""
+        parcel.readString() ?: "",
+        parcel.readInt()
     ) {
     }
 

@@ -7,8 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import g54516.hirehub.R
 import g54516.hirehub.database.dao.UserDao
+import g54516.hirehub.database.dto.DeveloperDto
 import g54516.hirehub.database.dto.UserDto
 import g54516.hirehub.database.entity.User
+import g54516.hirehub.database.repository.DeveloperRepository
 import g54516.hirehub.database.repository.UserRepository
 import g54516.hirehub.database.service.AuthService
 import g54516.hirehub.model.Utils.isEmailValid
@@ -24,7 +26,17 @@ class RegisterViewModel(
 
     private val application = application
 
-    private var _repository: UserRepository
+    private var _userRepository: UserRepository
+
+    private var _developerRepository: DeveloperRepository
+
+    private var _domain: String
+
+    private var _experience: String
+
+    private var _avatar: String
+
+    private var _gender: String
 
     private var _displayToast = MutableLiveData<Boolean>()
     val displayToast: LiveData<Boolean>
@@ -38,10 +50,19 @@ class RegisterViewModel(
     val isRegistered: LiveData<Boolean>
         get() = _isRegistered
 
+    private var _isDeveloper = MutableLiveData<Boolean>()
+    val isDeveloper: LiveData<Boolean>
+        get() = _isDeveloper
+
     init {
         _displayToast.value = false
         _isRegistered.value = false
-        _repository = UserRepository()
+        _userRepository = UserRepository()
+        _developerRepository = DeveloperRepository()
+        _avatar = "default_avatar_male"
+        _gender = ""
+        _domain = ""
+        _experience = ""
     }
 
     fun register(
@@ -50,18 +71,32 @@ class RegisterViewModel(
         lastname: String,
         password: String,
         confirmPassword: String,
-        phone: String,
-        gender: String
+        phone: String
     ) {
         _displayToast.value = true
-        if (isFormCompleted(email, firstname, lastname, password, confirmPassword, phone, gender)) {
+        if (isFormCompleted(email, firstname, lastname, password, confirmPassword, phone)) {
             AuthService.signUp(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     _notification.value =
                         application.getString(R.string.signup_successful_notification)
                     _isRegistered.value = true
                     AuthService.signIn(email, password)
-                    insert(UserDto(email, firstname, lastname, gender, phone.toInt()), Date())
+                    if (_isDeveloper.value == true) {
+                        insertDeveloper(
+                            DeveloperDto(
+                                email, firstname, lastname,
+                                _domain, _experience, _gender,
+                                phone.toInt(), 1, _avatar
+                            ), Date()
+                        )
+                    } else {
+                        insertUser(
+                            UserDto(
+                                email, firstname, lastname, _gender,
+                                phone.toInt()
+                            ), Date()
+                        )
+                    }
                 } else {
                     _notification.value =
                         application.getString(R.string.signup_unsuccessful_notification)
@@ -74,14 +109,47 @@ class RegisterViewModel(
         _displayToast.value = isDisplayed
     }
 
-    private fun insert(user: UserDto, date: Date) {
+    fun setDeveloper(isDeveloper: Boolean) {
+        _isDeveloper.value = isDeveloper
+    }
+
+    fun setGender(gender: String) {
+        _gender = gender
+    }
+
+    fun setDomain(domain: String) {
+        _domain = domain
+    }
+
+    fun setAvatar(avatar: String) {
+        _avatar = avatar
+    }
+
+    fun setExperience(experience: String) {
+        _experience = experience
+    }
+
+    private fun insertUser(user: UserDto, date: Date) {
         viewModelScope.launch {
-            _repository.add(user)
+            _userRepository.addUser(user)
             database.insert(
                 User(
                     email = user.email,
                     firstName = user.firstName, lastName = user.lastName,
                     gender = user.gender, phoneNumber = user.phoneNumber, date = date
+                )
+            )
+        }
+    }
+
+    private fun insertDeveloper(developer: DeveloperDto, date: Date) {
+        viewModelScope.launch {
+            _developerRepository.addDeveloper(developer)
+            database.insert(
+                User(
+                    email = developer.email, firstName = developer.firstName,
+                    lastName = developer.lastName, gender = developer.gender,
+                    phoneNumber = developer.phoneNumber, date = date
                 )
             )
         }
@@ -93,8 +161,7 @@ class RegisterViewModel(
         lastname: String,
         password: String,
         confirmPassword: String,
-        phone: String,
-        gender: String
+        phone: String
     ): Boolean {
         val errorMessage = when {
             email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phone.isEmpty()
@@ -104,7 +171,8 @@ class RegisterViewModel(
             !isEmailValid(email) -> R.string.signin_invalide_email
             !isPasswordSame(password, confirmPassword) -> R.string.signup_password_not_same
             !isPhoneNumberBelgian(phone) -> R.string.signup_phone_number
-            gender.isEmpty() -> R.string.signup_gender_unsuccessful
+            _gender.isEmpty() -> R.string.signup_gender_unsuccessful
+            _isDeveloper.value == null -> R.string.signup_role_unsuccessful
             else -> null
         }
         errorMessage?.let {

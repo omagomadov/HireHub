@@ -7,10 +7,34 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import g54516.hirehub.database.dto.DeveloperDto
-import g54516.hirehub.database.dto.UserDto
 import kotlinx.coroutines.tasks.await
 
 class DeveloperRepository {
+
+    fun addDeveloper(entity: DeveloperDto) {
+        try {
+            Firebase.firestore.collection("Developer")
+                .document(entity.email)
+                .set(
+                    hashMapOf(
+                        "email" to entity.email,
+                        "firstName" to entity.firstName,
+                        "lastName" to entity.lastName,
+                        "domain" to entity.domain,
+                        "experience_level" to entity.experience_level,
+                        "gender" to entity.gender,
+                        "phoneNumber" to entity.phoneNumber,
+                        "avatar" to entity.avatar,
+                        "rating" to entity.rating
+                    )
+                )
+        } catch (e: Exception) {
+            Log.d(
+                ContentValues.TAG,
+                "Erreur lors de l'insertion d'un utilisateur: ${e.toString()}"
+            )
+        }
+    }
 
     suspend fun getAllDevelopers(): List<DeveloperDto> {
         var developers = mutableListOf<DeveloperDto>()
@@ -51,7 +75,7 @@ class DeveloperRepository {
     }
 
     suspend fun getDeveloperByEmail(email: String): DeveloperDto? {
-        var developer : DeveloperDto? = null
+        var developer: DeveloperDto? = null
         try {
             Firebase.firestore
                 .collection("Developer")

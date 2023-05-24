@@ -9,7 +9,7 @@ import kotlinx.coroutines.tasks.await
 
 class UserRepository {
 
-    fun add(entity: UserDto) {
+    fun addUser(entity: UserDto) {
         try {
             Firebase.firestore.collection("User")
                 .document(entity.email)

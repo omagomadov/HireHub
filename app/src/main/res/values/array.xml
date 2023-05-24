@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="domain_array">
+        <item>Développement web</item>
+        <item>Développement mobile</item>
+        <item>Développement logiciel</item>
+        <item>Développement d\'applications</item>
+        <item>Développement front-end</item>
+        <item>Développement back-end</item>
+        <item>Développement full-stack</item>
+        <item>Développement iOS</item>
+        <item>Développement Android</item>
+        <item>Développement Java</item>
+    </string-array>
+    <string-array name="experience_array">
+        <item>Junior</item>
+        <item>Middle</item>
+        <item>Senior</item>
+    </string-array>
+</resources>

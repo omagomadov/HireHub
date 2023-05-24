@@ -6,6 +6,13 @@
     tools:context=".ui.fragments.RegisterFragment">
 
 
+    <data>
+
+        <variable
+            name="fragment"
+            type="g54516.hirehub.ui.fragments.RegisterFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -168,6 +175,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/margin"
+                            android:onClick="@{fragment.onRadioButtonGenderClicked}"
                             android:text="@string/radio_button_male" />
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -175,9 +183,74 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/margin"
+                            android:onClick="@{fragment.onRadioButtonGenderClicked}"
                             android:text="@string/radio_button_female" />
 
                     </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin"
+                        android:gravity="center"
+                        android:text="@string/register_gender"
+                        android:textSize="16sp" />
+
+                    <RadioGroup
+                        android:id="@+id/role_radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/user_radio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin"
+                            android:onClick="@{fragment.onRadioButtonRoleClicked}"
+                            android:text="@string/radio_button_user" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/developer_radio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin"
+                            android:onClick="@{fragment.onRadioButtonRoleClicked}"
+                            android:text="@string/radio_button_developer" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/developer_information"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/domain_spinner"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="@dimen/input_height"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/margin" />
+
+                    <Spinner
+                        android:id="@+id/experience_spinner"
+                        android:layout_width="@dimen/input_width"
+                        android:layout_height="@dimen/input_height"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/margin" />
 
                 </LinearLayout>
 
