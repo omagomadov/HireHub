@@ -6,23 +6,24 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import g54516.hirehub.database.dto.AppointmentDto
 import g54516.hirehub.database.dto.DeveloperDto
+import g54516.hirehub.database.dto.UserDto
 import kotlinx.coroutines.tasks.await
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 
 class AppointmentRepository {
 
-    fun addAppointment(user_email: String, developer: DeveloperDto, date: LocalDateTime) {
+    fun addAppointment(user: UserDto, developer: DeveloperDto, date: LocalDateTime) {
         try {
             Firebase.firestore.collection("Appointment")
                 .add(
                     hashMapOf(
-                        "user_email" to user_email,
+                        "user_email" to user.email,
                         "developer_email" to developer.email,
                         "developer_full_name" to developer.firstName + " " + developer.lastName,
+                        "user_full_name" to user.firstName + " " + user.lastName,
                         "developer_avatar" to developer.avatar,
                         "date" to ZonedDateTime
                             .of(date, ZoneId.systemDefault()).toInstant().toEpochMilli()

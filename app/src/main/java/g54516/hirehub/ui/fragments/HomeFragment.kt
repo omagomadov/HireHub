@@ -11,7 +11,7 @@ import g54516.hirehub.R
 import g54516.hirehub.database.HireHubDB
 import g54516.hirehub.database.repository.AppointmentRepository
 import g54516.hirehub.databinding.FragmentHomeBinding
-import g54516.hirehub.model.adapters.AppointmentAdapter
+import g54516.hirehub.model.adapters.UserAppointmentAdapter
 import g54516.hirehub.model.factories.HomeViewModelFactory
 import g54516.hirehub.model.viewmodel.HomeViewModel
 
@@ -43,13 +43,9 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
 
-        val incomeAdapter = AppointmentAdapter(AppointmentAdapter.AppointmentListener {
-            //todo
-        })
+        val incomeAdapter = UserAppointmentAdapter()
 
-        val passedAdapter = AppointmentAdapter(AppointmentAdapter.AppointmentListener {
-            //todo
-        })
+        val passedAdapter = UserAppointmentAdapter()
 
         binding.recycleIncomeMeeting.adapter = incomeAdapter
         binding.recyclePassedMeeting.adapter = passedAdapter

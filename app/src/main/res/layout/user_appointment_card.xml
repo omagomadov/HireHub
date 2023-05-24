@@ -9,10 +9,6 @@
             type="g54516.hirehub.database.dto.AppointmentDto" />
 
         <variable
-            name="clickListener"
-            type="g54516.hirehub.model.adapters.AppointmentAdapter.AppointmentListener" />
-
-        <variable
             name="date"
             type="String" />
     </data>
@@ -23,7 +19,6 @@
         android:layout_margin="@dimen/margin"
         android:background="@drawable/card_rounded"
         android:elevation="2dp"
-        android:onClick="@{() -> clickListener.onClick(appointment)}"
         android:padding="@dimen/padding">
 
         <ImageView

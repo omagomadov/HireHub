@@ -4,6 +4,7 @@ data class AppointmentDto(
     val user_email: String = "",
     val developer_email: String = "",
     val developer_full_name: String = "",
+    val user_full_name: String = "",
     val developer_avatar: String = "",
     val date: Long = 0L,
 )

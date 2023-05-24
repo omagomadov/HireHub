@@ -10,26 +10,25 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import g54516.hirehub.R
 import g54516.hirehub.database.dto.AppointmentDto
-import g54516.hirehub.databinding.AppointmentCardBinding
-import g54516.hirehub.model.adapters.AppointmentAdapter
+import g54516.hirehub.databinding.UserAppointmentCardBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class AppointmentViewHolder private constructor(private val binding: AppointmentCardBinding) :
+class UserAppointmentViewHolder private constructor(private val binding: UserAppointmentCardBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     companion object {
-        fun from(parent: ViewGroup): AppointmentViewHolder {
+        fun from(parent: ViewGroup): UserAppointmentViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val binding: AppointmentCardBinding =
+            val binding: UserAppointmentCardBinding =
                 DataBindingUtil
-                    .inflate(inflater, R.layout.appointment_card, parent, false)
-            return AppointmentViewHolder(binding)
+                    .inflate(inflater, R.layout.user_appointment_card, parent, false)
+            return UserAppointmentViewHolder(binding)
         }
     }
 
-    fun bind(appointment: AppointmentDto, clickListener: AppointmentAdapter.AppointmentListener) {
+    fun bind(appointment: AppointmentDto) {
 
         val instance = FirebaseStorage.getInstance().reference
         val ref = instance.child(appointment.developer_avatar)
@@ -45,7 +44,6 @@ class AppointmentViewHolder private constructor(private val binding: Appointment
                 .into(binding.avatarDeveloper)
         }
 
-        binding.clickListener = clickListener
         binding.appointment = appointment
         binding.date = date
         binding.hasPendingBindings()

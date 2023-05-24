@@ -4,8 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import g54516.hirehub.database.dto.DeveloperDto
+import g54516.hirehub.database.dto.UserDto
 import g54516.hirehub.database.repository.AppointmentRepository
+import g54516.hirehub.database.repository.UserRepository
+import g54516.hirehub.database.service.AuthService
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class AppointmentViewModel(
@@ -13,6 +18,12 @@ class AppointmentViewModel(
     val developer: DeveloperDto?,
     application: Application
 ) : AndroidViewModel(application) {
+
+    private val _userRepository = UserRepository()
+
+    private var _currentUser = MutableLiveData<UserDto>()
+    val currentUser: LiveData<UserDto>
+        get() = _currentUser
 
     private var _appointmentDate = MutableLiveData<LocalDate>()
     val appointmentDate: LiveData<LocalDate>
@@ -35,6 +46,7 @@ class AppointmentViewModel(
         _userSelectedValidDate.value = true
         _timeSlots.value = listOf(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
         _appointmentHour.value = 10
+        getCurrentUser()
     }
 
     fun addAppointment(user_email: String, developer: DeveloperDto, date: LocalDate?) {
@@ -43,7 +55,9 @@ class AppointmentViewModel(
             if (date != null && hours != null) {
                 // Add on the LocalDate => chosen hours
                 val dateWithHours = date.atStartOfDay().plusHours(hours.toLong())
-                database.addAppointment(user_email, developer, dateWithHours)
+                _currentUser.value?.let {
+                    database.addAppointment(it, developer, dateWithHours)
+                }
             }
         }
     }
@@ -55,6 +69,12 @@ class AppointmentViewModel(
 
     fun updateHour(hour: Int) {
         _appointmentHour.value = hour
+    }
+
+    private fun getCurrentUser() {
+        viewModelScope.launch {
+            _currentUser.value = _userRepository.getUserByEmail(AuthService.getCurrentUser())
+        }
     }
 
 }
