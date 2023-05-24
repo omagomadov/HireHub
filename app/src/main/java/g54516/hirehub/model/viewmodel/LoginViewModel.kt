@@ -39,11 +39,16 @@ class LoginViewModel(
     val isConnected: LiveData<Boolean>
         get() = _isConnected
 
+    private var _isDeveloper = MutableLiveData<Boolean>()
+    val isDeveloper: LiveData<Boolean>
+        get() = _isDeveloper
+
     var emails: LiveData<List<String>> = database.getAllEmails()
 
     init {
         _displayToast.value = false
         _isConnected.value = false
+        _isDeveloper.value = false
     }
 
     fun signIn(email: String, password: String, date: Date) {
@@ -92,6 +97,7 @@ class LoginViewModel(
         viewModelScope.launch {
             val user = _userRepository.getUserByEmail(email)
             if (user != null) {
+                _isDeveloper.value = false
                 if (database.getUserByEmail(email) == null) {
                     insert(user, date)
                 } else {
@@ -105,6 +111,7 @@ class LoginViewModel(
                 _isConnected.value = true
             } else {
                 val developer = _developerRepository.getDeveloperByEmail(email)
+                _isDeveloper.value = true
                 if (developer != null) {
                     val user = UserDto(
                         developer.email,

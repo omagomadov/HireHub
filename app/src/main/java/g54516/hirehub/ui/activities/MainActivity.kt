@@ -3,6 +3,7 @@ package g54516.hirehub.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = findNavController(R.id.main_navigation_host)
         binding.topBar.title = ""
+        setupVisibilityOfMenu()
         setupBottomBarSelectListener()
         setupBottomBarReselectListeners()
         setSupportActionBar(binding.topBar)
@@ -73,6 +75,16 @@ class MainActivity : AppCompatActivity() {
                 R.id.home, R.id.search, R.id.logout, R.id.setting -> true
                 else -> false
             }
+        }
+    }
+
+    private fun setupVisibilityOfMenu() {
+        if(intent.getBooleanExtra("isDeveloper", false)) {
+            binding.bottomNavigation.menu.findItem(R.id.search).isVisible = false
+            binding.bottomNavigation.menu.findItem(R.id.pending).isVisible = true
+        } else {
+            binding.bottomNavigation.menu.findItem(R.id.search).isVisible = true
+            binding.bottomNavigation.menu.findItem(R.id.pending).isVisible = false
         }
     }
 }

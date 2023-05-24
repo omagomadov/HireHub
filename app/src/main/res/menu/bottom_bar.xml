@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/home"
@@ -9,6 +10,11 @@
         android:id="@+id/search"
         android:icon="@drawable/baseline_search_24"
         android:title="@string/search_menu" />
+    <item
+        android:id="@+id/pending"
+        android:icon="@drawable/baseline_groups_2_24"
+        android:title="@string/pending_menu"
+        android:visible="false" />
     <item
         android:id="@+id/setting"
         android:icon="@drawable/baseline_settings_24"

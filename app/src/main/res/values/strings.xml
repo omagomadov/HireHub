@@ -51,6 +51,7 @@
     <string name="logout_title">Déconnexion</string>
     <string name="home_menu">Accueil</string>
     <string name="search_menu">Recherche</string>
+    <string name="pending_menu">En attente</string>
     <string name="message_menu">Messagerie</string>
     <string name="setting_menu">Paramètre</string>
     <string name="home_title">Bienvenue</string>
