@@ -56,7 +56,7 @@ class SearchFragment : Fragment() {
 
             override fun onQueryTextChange(p0: String?): Boolean {
                 if (p0.isNullOrEmpty()) {
-                    this.onQueryTextSubmit("")
+                    developers.filter.filter(p0)
                 }
                 return true
             }
