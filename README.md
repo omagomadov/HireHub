@@ -15,7 +15,7 @@ Hirehub facilite également la gestion de votre emploi du temps grâce à sa fon
 <img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/fbf0ad0a3ce9d6e97338ac7890278a75/54516_wireframe.png" alt="Wireframe">
 
 ## Démonstration
-Le fragment de connexion permettant de se connecter
+**Le fragment de connexion permettant de se connecter**
 <br>
 <img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/a093f10cf5923d74a02bf6672e5ebaaa/login.png" alt="SigIn" height=400 width=400>
 
