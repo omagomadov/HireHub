@@ -10,6 +10,10 @@ Une fois que vous avez trouvé le développeur qui correspond à vos besoins, Hi
 
 Hirehub facilite également la gestion de votre emploi du temps grâce à sa fonctionnalité de suivi des rendez-vous. Vous pouvez garder une trace des rendez-vous passés et à venir, vous assurant de rester organisé et de ne rien manquer.
 
+## Wireframe
+
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/fbf0ad0a3ce9d6e97338ac7890278a75/54516_wireframe.png" alt="Wireframe">
+
 ## Démonstration
 Le fragment de connexion permettant de se connecter
 <br>
