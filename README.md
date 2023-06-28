@@ -1,7 +1,7 @@
 # HireHub
 ### Ce dépôt contient le projet pour l'UE MOBG6 à l'ESI.
 
-**Le projet est codé en Kotlin en utilisant le design pattern MVVM (Modèle-View-ViewModel)**
+**Le projet est codé en Kotlin et utilise le design pattern MVVM (Modèle-View-ViewModel)**
 
 ## Introduction
 Bienvenue dans Hirehub, l'application Android qui rend la recherche et la réservation de rendez-vous avec des développeurs plus simples que jamais. Il est possible de voir les détails des développeurs.
