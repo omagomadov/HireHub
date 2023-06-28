@@ -9,33 +9,41 @@ Une fois que vous avez trouvé le développeur qui correspond à vos besoins, Hi
 Hirehub facilite également la gestion de votre emploi du temps grâce à sa fonctionnalité de suivi des rendez-vous. Vous pouvez garder une trace des rendez-vous passés et à venir, vous assurant de rester organisé et de ne rien manquer.
 
 ## Démonstration
-**Le fragment de connexion permettant de se connecter**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/a093f10cf5923d74a02bf6672e5ebaaa/login.png" alt="SigIn">
+Le fragment de connexion permettant de se connecter
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/a093f10cf5923d74a02bf6672e5ebaaa/login.png" alt="SigIn" height=600 width=500>
 
 **Le fragment d'inscription permettant de créer un compte (soit utilisateur, soit développeur)**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/8f4451246eb1953417bd3994f58ee4f7/signup_1.png" alt="Signup_1">
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/8f4451246eb1953417bd3994f58ee4f7/signup_1.png" alt="Signup_1" height=600 width=500>
 
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/63fa5bf7f718d37151b54b36902a2b84/signup_2.png" alt="Signup_2">
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/63fa5bf7f718d37151b54b36902a2b84/signup_2.png" alt="Signup_2" height=600 width=500>
 
 **Le fragment qui permet la réinitialisation du mot de passe**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/418814b444c957a53d6b14cba06d0d0a/password_recovery.png" alt="Password_recovery">
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/418814b444c957a53d6b14cba06d0d0a/password_recovery.png" alt="Password_recovery" height=600 width=500>
 
 ### <span style="color:red; font-weight:bold;">Utilisateur</span>
 **Le fragment d'accueil qui affiche les rendez-vous à venir et passés**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/24284e807b6555757506d223950cd726/home.png" alt="Home">
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/24284e807b6555757506d223950cd726/home.png" alt="Home" height=600 width=500>
 
 **Le fragment qui permet d'effectuer une recherche par nom ou par tri**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/f9a671e74f23861239b6b95c55ebf86e/search.png" alt="Search">
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/f9a671e74f23861239b6b95c55ebf86e/search.png" alt="Search" height=600 width=500>
 
 **Le fragment qui affiche les détails d'un développeur**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/12dca8cfe185f859b40bc76aae628769/details.png" alt="Details">
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/12dca8cfe185f859b40bc76aae628769/details.png" alt="Details" height=600 width=500>
 
 **Le fragment qui affiche un calendrier et permet d'effectuer une réservation de rendez-vous pour le développeur concerné**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/be31b2adf1895f8911236e958ca0b0ea/calendar.png" alt="Calendar">
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/be31b2adf1895f8911236e958ca0b0ea/calendar.png" alt="Calendar" height=600 width=500>
 
 ### <span style="color:red; font-weight:bold;">Développeur</span>
 **Le fragment qui permet d'accepter ou de refuser un rendez-vous**
-<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/212e5055b7151cf61518ca84d5bb23b7/approval.png" alt="Approval">
+<br>
+<img src="https://git.esi-bru.be/2022-2023/mobg6/projets/g54516/uploads/212e5055b7151cf61518ca84d5bb23b7/approval.png" alt="Approval" height=600 width=500>
 
 ## Auteur
 Oumar Magomadov (54516@etu.he2b.be)
